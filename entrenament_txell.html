@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a0a1e">
+<title>Txell · Gym</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#C06FD4;--gd:#8e3fa0;--gl:rgba(192,111,212,0.15);
+  --a:#EF9F27;--al:rgba(239,159,39,0.15);
+  --r:#E24B4A;--rl:rgba(226,75,74,0.15);
+  --b:#378ADD;
+  --bg:#0f0a14;--bg2:#17101e;--bg3:#1e1428;--bg4:#261a32;
+  --card:#2a1d35;--card2:#2e2039;
+  --bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.12);
+  --t:#f5eef8;--t2:#a87ab8;--t3:#5d3d6b;
+  --rad:14px;--radsm:9px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-width:430px;margin:0 auto;display:flex;flex-direction:column}
+
+.hdr{background:var(--bg2);padding:50px 18px 12px;border-bottom:1px solid var(--bdr);flex-shrink:0}
+.hdr-row{display:flex;justify-content:space-between;align-items:flex-start}
+.hdr-name{font-size:11px;color:var(--t3);letter-spacing:.5px;text-transform:uppercase}
+.hdr-title{font-size:20px;font-weight:600;color:var(--t);letter-spacing:-.3px;margin-top:1px}
+.hdr-date{font-size:11px;color:var(--t3);margin-top:2px}
+
+.tabs{display:flex;background:var(--bg2);border-bottom:1px solid var(--bdr);flex-shrink:0}
+.tab{flex:1;padding:10px 2px;font-size:11px;font-weight:600;color:var(--t3);text-align:center;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;letter-spacing:.5px;text-transform:uppercase}
+.tab.on{color:var(--g);border-bottom-color:var(--g)}
+
+.pages{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.page{display:none;padding:14px 16px 100px}
+.page.on{display:block}
+
+.st{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.8px;margin:16px 0 8px}
+
+.fl{font-size:11px;color:var(--t2);margin-bottom:4px;display:block;font-weight:500}
+.fi{width:100%;background:var(--bg3);border:1px solid var(--bdr2);border-radius:var(--radsm);padding:9px 11px;font-size:14px;color:var(--t);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s;-webkit-appearance:none}
+.fi:focus{border-color:var(--g)}
+.fi::placeholder{color:var(--t3)}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:11px}
+
+.btn{width:100%;padding:12px;background:var(--g);color:#fff;border:none;border-radius:var(--radsm);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s;margin-top:4px}
+.btn:active{background:var(--gd)}
+.btn-sec{background:none;color:var(--t2);border:1px solid var(--bdr2);margin-top:7px}
+
+.sess-hdr{background:linear-gradient(135deg,#2a0d4a 0%,#3a0f5c 100%);border-radius:var(--rad);border:1px solid rgba(192,111,212,0.25);padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(192,111,212,0.12)}
+.sess-label{font-size:14px;font-weight:600;color:#e8b8f5;letter-spacing:-.1px}
+.sess-sub{font-size:10px;color:#b07acc;margin-top:2px}
+
+.ex-card{background:var(--bg3);border-radius:var(--radsm);border:1px solid var(--bdr);margin-bottom:8px;overflow:hidden}
+.ex-hdr{padding:11px 13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.ex-name{font-size:13px;font-weight:500;color:var(--t)}
+.ex-meta{font-size:10px;color:var(--t3);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ex-arrow{color:var(--t3);font-size:13px;transition:transform .2s;flex-shrink:0;margin-left:8px}
+.ex-card.open .ex-arrow{transform:rotate(180deg)}
+.ex-body{padding:0 13px 12px;border-top:1px solid var(--bdr);display:none}
+.ex-card.open .ex-body{display:block}
+
+.badge-up{background:rgba(239,159,39,.18);border:1px solid rgba(239,159,39,.35);color:#fac775;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
+.badge-ok{background:rgba(192,111,212,.12);border:1px solid rgba(192,111,212,.25);color:#c87de0;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
+
+/* INSTRUCCIONS exercici */
+.ex-instruccions{background:rgba(192,111,212,0.07);border:1px solid rgba(192,111,212,0.2);border-radius:9px;padding:10px 12px;margin:10px 0 8px}
+.ex-instruccions-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#c87de0;margin-bottom:6px}
+.ex-instruccions-text{font-size:11px;color:#d9b4e8;line-height:1.7}
+
+/* SVG il·lustració */
+.ex-svg-wrap{background:rgba(0,0,0,0.2);border-radius:9px;margin:0 0 10px;overflow:hidden;display:flex;justify-content:center;align-items:center;padding:8px 0}
+.ex-svg-wrap svg{max-width:200px;width:100%;height:auto}
+
+.ex-tip{background:rgba(55,138,221,0.07);border:1px solid rgba(55,138,221,0.15);border-radius:7px;padding:7px 10px;margin:0 0 8px;font-size:10px;color:#85b7eb;line-height:1.6}
+
+.ex-ref{background:rgba(192,111,212,.07);border:1px solid rgba(192,111,212,.15);border-radius:7px;padding:7px 10px;margin-bottom:9px}
+.ex-ref-title{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#c87de0;margin-bottom:4px}
+.ex-ref-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(60px,1fr));gap:5px}
+.ex-ref-serie{background:rgba(0,0,0,.2);border-radius:5px;padding:4px 7px;text-align:center}
+.ex-ref-s{font-size:9px;color:var(--t3)}
+.ex-ref-v{font-size:12px;font-weight:600;color:var(--t);font-family:'DM Mono',monospace;margin-top:1px}
+.ex-ref-flag{font-size:9px;color:#fac775;margin-top:1px}
+
+.series-hdr{display:grid;grid-template-columns:22px 1fr 1fr 80px;gap:6px;padding:4px 0;align-items:center}
+.series-hdr span{font-size:9px;color:var(--t3);text-align:center;text-transform:uppercase;letter-spacing:.4px}
+.serie-row{display:grid;grid-template-columns:22px 1fr 1fr 80px;gap:6px;align-items:center;margin-bottom:6px}
+.serie-n{font-size:11px;color:var(--t3);text-align:center;font-family:'DM Mono',monospace}
+.serie-in{background:var(--card2);border:1px solid var(--bdr);border-radius:6px;padding:7px 4px;font-size:13px;color:var(--t);text-align:center;font-family:'DM Mono',monospace;width:100%;outline:none;-webkit-appearance:none}
+.serie-in:focus{border-color:var(--g)}
+
+.puja-btn{display:flex;align-items:center;justify-content:center;gap:4px;padding:5px 7px;border-radius:6px;border:1px solid var(--bdr);background:none;color:var(--t3);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;width:100%}
+.puja-btn.on{background:rgba(239,159,39,.15);border-color:rgba(239,159,39,.4);color:#fac775}
+
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.sgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.sc{background:var(--bg3);border-radius:var(--radsm);padding:11px 12px}
+.sc-n{font-size:21px;font-weight:600;color:var(--t);font-family:'DM Mono',monospace}
+.sc-l{font-size:10px;color:var(--t2);margin-top:2px}
+
+.goal-bar-wrap{margin:10px 0 14px}
+.goal-bar-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--t3);margin-bottom:5px}
+.goal-bar-track{background:var(--bg3);border-radius:99px;height:7px;overflow:hidden}
+.goal-bar-fill{height:7px;border-radius:99px;background:linear-gradient(90deg,var(--r),var(--a),var(--g));transition:width .6s ease}
+
+.chart-wrap{position:relative;width:100%;margin:4px 0 12px}
+
+.hi{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.hi:last-child{border-bottom:none}
+.hi-date{font-size:11px;color:var(--t3)}
+.hi-detail{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.5}
+.hi-right{text-align:right;flex-shrink:0;margin-left:10px}
+.hi-val{font-size:15px;font-weight:600;color:var(--t);font-family:'DM Mono',monospace}
+.hi-delta{font-size:10px;margin-top:1px}
+.del-btn{background:none;border:none;color:var(--t3);font-size:14px;cursor:pointer;padding:2px 4px;line-height:1;margin-top:3px;display:block;margin-left:auto}
+
+.gym-hist-card{background:var(--bg3);border-radius:var(--radsm);border:1px solid var(--bdr);margin-bottom:7px;overflow:hidden}
+.gym-hist-hdr{padding:10px 13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.gym-hist-body{padding:8px 13px 12px;border-top:1px solid var(--bdr);display:none;font-size:10px;color:var(--t2);font-family:'DM Mono',monospace;line-height:1.9}
+.gym-hist-card.open .gym-hist-body{display:block}
+
+.cg{color:#c87de0}.ca{color:#fac775}.cr{color:#f09595}
+
+.subtab{flex:1;padding:8px 4px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--radsm);font-size:10px;font-weight:700;color:var(--t3);cursor:pointer;text-align:center;transition:all .15s;letter-spacing:.4px;text-transform:uppercase}
+.subtab.on{background:var(--gl);border-color:var(--g);color:var(--g)}
+.gympage{display:none}
+.gympage.on{display:block}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;padding:9px 20px;border-radius:99px;font-size:13px;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;z-index:300}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-row">
+    <div>
+      <div class="hdr-name">Txell · Rutina Gym</div>
+      <div class="hdr-title" id="hdr-title">Torso</div>
+    </div>
+    <div><div class="hdr-date" id="hdr-date"></div></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab on" onclick="goMainTab(0)">💪 GYM</div>
+  <div class="tab"    onclick="goMainTab(1)">⚖️ PES</div>
+</div>
+
+<div class="pages">
+
+<!-- TAB 0: GYM -->
+<div class="page on" id="tab-0">
+
+  <div style="display:flex;gap:6px;margin-bottom:14px">
+    <div class="subtab on" id="subtab-TORSO"  onclick="goGymTab('TORSO')">TORSO</div>
+    <div class="subtab"    id="subtab-CAMES_A" onclick="goGymTab('CAMES_A')">CAMES A</div>
+    <div class="subtab"    id="subtab-CAMES_B" onclick="goGymTab('CAMES_B')">CAMES B</div>
+  </div>
+
+  <!-- TORSO -->
+  <div class="gympage on" id="gympage-TORSO">
+    <div class="sess-hdr">
+      <div><div class="sess-label">Pit, Esquena & Espatlla</div><div class="sess-sub" id="torso-last-date">Sense sessions anteriors</div></div>
+      <input type="date" class="fi" id="torso-date" style="width:auto;font-size:12px;padding:6px 9px">
+    </div>
+    <div id="torso-exercises"></div>
+    <button class="btn" onclick="saveSession('TORSO')">💾 Desar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('TORSO')">↺ Buidar</button>
+    <div class="st">Historial TORSO</div>
+    <div id="torso-hist"></div>
+  </div>
+
+  <!-- CAMES A -->
+  <div class="gympage" id="gympage-CAMES_A">
+    <div class="sess-hdr">
+      <div><div class="sess-label">Cames A · Quàdriceps & Gluti</div><div class="sess-sub" id="cames_a-last-date">Sense sessions anteriors</div></div>
+      <input type="date" class="fi" id="cames_a-date" style="width:auto;font-size:12px;padding:6px 9px">
+    </div>
+    <div id="cames_a-exercises"></div>
+    <button class="btn" onclick="saveSession('CAMES_A')">💾 Desar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('CAMES_A')">↺ Buidar</button>
+    <div class="st">Historial CAMES A</div>
+    <div id="cames_a-hist"></div>
+  </div>
+
+  <!-- CAMES B -->
+  <div class="gympage" id="gympage-CAMES_B">
+    <div class="sess-hdr">
+      <div><div class="sess-label">Cames B · Isquios, Gluti & Core</div><div class="sess-sub" id="cames_b-last-date">Sense sessions anteriors</div></div>
+      <input type="date" class="fi" id="cames_b-date" style="width:auto;font-size:12px;padding:6px 9px">
+    </div>
+    <div id="cames_b-exercises"></div>
+    <button class="btn" onclick="saveSession('CAMES_B')">💾 Desar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('CAMES_B')">↺ Buidar</button>
+    <div class="st">Historial CAMES B</div>
+    <div id="cames_b-hist"></div>
+  </div>
+
+</div>
+
+<!-- TAB 1: PES -->
+<div class="page" id="tab-1">
+  <div class="sgrid">
+    <div class="sc"><div class="sc-n" id="p-actual">—</div><div class="sc-l">Pes actual (kg)</div></div>
+    <div class="sc"><div class="sc-n ca" id="p-queda">—</div><div class="sc-l">Fins objectiu</div></div>
+  </div>
+  <div class="sgrid3">
+    <div class="sc"><div class="sc-n cg" id="p-perdut">0.0</div><div class="sc-l">kg perduts</div></div>
+    <div class="sc"><div class="sc-n" id="p-grasa-act">—</div><div class="sc-l">% Grasa</div></div>
+    <div class="sc"><div class="sc-n" id="p-musc-act">—</div><div class="sc-l">kg muscular</div></div>
+  </div>
+  <div class="goal-bar-wrap">
+    <div class="goal-bar-labels">
+      <span id="goal-inici-label">Inici</span>
+      <span id="goal-pct-label">0% assolit</span>
+      <span id="goal-obj-label">Objectiu</span>
+    </div>
+    <div class="goal-bar-track"><div class="goal-bar-fill" id="goal-bar" style="width:0%"></div></div>
+  </div>
+  <div class="st">Evolució del pes</div>
+  <div class="chart-wrap" style="height:120px"><canvas id="chart-pes"></canvas></div>
+  <div class="st">% Grasa corporal</div>
+  <div class="chart-wrap" style="height:80px"><canvas id="chart-grasa"></canvas></div>
+  <div class="st">Nova mesura</div>
+  <div style="background:var(--card);border-radius:var(--rad);border:1px solid var(--bdr);padding:13px 15px;margin-bottom:9px">
+    <div class="fg2">
+      <div><label class="fl">Data</label><input class="fi" type="date" id="p-data"></div>
+      <div><label class="fl">Pes (kg)</label><input class="fi" type="number" step="0.1" inputmode="decimal" placeholder="pes" id="p-pes"></div>
+    </div>
+    <div class="fg2">
+      <div><label class="fl">% Grasa (opcional)</label><input class="fi" type="number" step="0.1" inputmode="decimal" placeholder="%" id="p-grasa"></div>
+      <div><label class="fl">Muscular kg (opcional)</label><input class="fi" type="number" step="0.1" inputmode="decimal" placeholder="kg" id="p-musc"></div>
+    </div>
+    <div style="margin-bottom:11px"><label class="fl">Objectiu pes (kg)</label><input class="fi" type="number" step="0.1" inputmode="decimal" placeholder="p. ex. 60" id="p-obj"></div>
+    <div style="margin-bottom:11px"><label class="fl">Notes</label><input class="fi" placeholder="Observacions..." id="p-notes-pes"></div>
+    <button class="btn" onclick="savePes()">Guardar mesura</button>
+  </div>
+  <div class="st">Historial de mesures</div>
+  <div style="background:var(--card);border-radius:var(--rad);border:1px solid var(--bdr);padding:0 15px" id="pes-hist"></div>
+</div>
+
+</div><!-- /pages -->
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ═══════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════
+const S={
+  get(k){try{const v=localStorage.getItem('txell_'+k);return v?JSON.parse(v):null;}catch{return null;}},
+  set(k,v){try{localStorage.setItem('txell_'+k,JSON.stringify(v));}catch{}},
+  arr(k){return this.get(k)||[]},
+  push(k,v){const a=this.arr(k);a.push(v);this.set(k,a);}
+};
+
+// ═══════════════════════════════════════════
+// SVG IL·LUSTRACIONS — clares, grans, etiquetades
+// ═══════════════════════════════════════════
+const SVG = {
+
+  premsa_pit: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="pp1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="196" y="50" width="16" height="112" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="178" y="78" width="20" height="65" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <line x1="178" y1="100" x2="152" y2="100" stroke="#7a4a90" stroke-width="3"/>
+  <circle cx="152" cy="100" r="5" fill="#C06FD4" opacity=".7"/>
+  <rect x="110" y="126" width="70" height="14" rx="5" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="128" y="140" width="34" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <circle cx="148" cy="78" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="148" y1="92" x2="148" y2="128" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="148" y1="126" x2="112" y2="126" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="112" y1="126" x2="112" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="100" y1="167" x2="124" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="148" y1="105" x2="152" y2="100" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="148" y1="105" x2="172" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <line x1="164" y1="101" x2="154" y2="100" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pp1)"/>
+  <ellipse cx="148" cy="105" rx="10" ry="12" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PRESS PIT - Maquina</text>
+  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - estas asseguda i empenys cap endavant</text>
+  <text x="80" y="100" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">empeny</text>
+  <text x="148" y="175" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Esquena recolzada - Colzes lleugerament per sota de les espatlles</text>
+</svg>`,
+
+  obertura_pit: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="op1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
+    <marker id="op2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+  </defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- MAQUINA: columnes esquerra i dreta -->
+  <rect x="10" y="45" width="12" height="118" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="258" y="45" width="12" height="118" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <!-- COIXINETS (on posen els colzes) - ben visibles -->
+  <rect x="20" y="88" width="34" height="30" rx="7" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <text x="37" y="107" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="600">colze</text>
+  <rect x="226" y="88" width="34" height="30" rx="7" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <text x="243" y="107" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="600">colze</text>
+  <!-- seient -->
+  <rect x="112" y="130" width="56" height="12" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <rect x="126" y="142" width="28" height="26" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <!-- PERSONA vista frontal -->
+  <circle cx="140" cy="70" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="84" x2="140" y2="130" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="140" y1="128" x2="118" y2="166" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="128" x2="162" y2="166" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- BRACOS: posicio OBERTA (inicial) - puntejat -->
+  <line x1="140" y1="98" x2="54" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
+  <line x1="140" y1="98" x2="226" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
+  <!-- BRACOS: posicio TANCADA (final) - solida i gruixuda -->
+  <line x1="140" y1="98" x2="86" y2="100" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="140" y1="98" x2="194" y2="100" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- PIT destacat -->
+  <ellipse cx="140" cy="98" rx="22" ry="18" fill="#C06FD4" opacity=".2" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="140" y="101" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PIT</text>
+  <!-- FLETXES ARC molt visibles: de posicio oberta cap a tancada -->
+  <path d="M 54 100 Q 68 82 86 100" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#op1)"/>
+  <path d="M 226 100 Q 212 82 194 100" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#op2)"/>
+  <!-- labels obertura -->
+  <text x="44" y="78" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">OBERT</text>
+  <text x="44" y="88" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">(inici)</text>
+  <text x="236" y="78" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">OBERT</text>
+  <text x="236" y="88" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">(inici)</text>
+  <text x="140" y="80" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">TANCAT (final)</text>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">OBERTURA PIT - Pec Deck</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Colzes a 90° als coixinets - Tanca seguint arc - Para 1 seg al centre</text>
+</svg>`,
+
+  lat_pulldown: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="lp1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <rect x="120" y="12" width="40" height="8" rx="3" fill="#261636" stroke="#7a4a90" stroke-width="1.5"/>
+  <line x1="140" y1="8" x2="140" y2="16" stroke="#7a4a90" stroke-width="3"/>
+  <rect x="44" y="16" width="192" height="8" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <circle cx="52" cy="20" r="6" fill="#7a4a90" opacity=".7"/>
+  <circle cx="228" cy="20" r="6" fill="#7a4a90" opacity=".7"/>
+  <line x1="52" y1="26" x2="96" y2="72" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
+  <line x1="228" y1="26" x2="184" y2="72" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
+  <rect x="110" y="132" width="60" height="10" rx="4" fill="#7a4a90" opacity=".5" stroke="#C06FD4" stroke-width="1"/>
+  <rect x="108" y="140" width="64" height="10" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <circle cx="140" cy="74" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="88" x2="143" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="143" y1="132" x2="112" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="143" y1="132" x2="172" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="88" x2="96" y2="72" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="140" y1="88" x2="184" y2="72" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="140" y1="24" x2="140" y2="80" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#lp1)"/>
+  <ellipse cx="143" cy="108" rx="12" ry="18" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="170" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">LAT PULLDOWN - Politja Alta</text>
+  <text x="140" y="158" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Tira la barra fins al pit - Colzes van cap avall i als costats</text>
+  <text x="52" y="55" font-size="8" fill="#a87ab8" font-family="sans-serif">mans</text>
+  <text x="204" y="55" font-size="8" fill="#a87ab8" font-family="sans-serif">amples</text>
+  <text x="162" y="108" font-size="8" fill="#EF9F27" font-family="sans-serif">esquena</text>
+</svg>`,
+
+  rem_assegut: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="ra1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="14" y="50" width="16" height="110" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <circle cx="22" cy="112" r="9" fill="#1e1428" stroke="#7a4a90" stroke-width="2"/>
+  <circle cx="22" cy="112" r="4" fill="#7a4a90"/>
+  <rect x="28" y="136" width="50" height="10" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <line x1="30" y1="112" x2="92" y2="108" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,3" opacity=".6"/>
+  <line x1="92" y1="106" x2="104" y2="102" stroke="#7a4a90" stroke-width="3"/>
+  <line x1="92" y1="110" x2="104" y2="114" stroke="#7a4a90" stroke-width="3"/>
+  <rect x="100" y="132" width="100" height="12" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <circle cx="178" cy="82" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="178" y1="96" x2="176" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="176" y1="130" x2="104" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="104" y1="132" x2="98" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="178" y1="106" x2="104" y2="108" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="178" y1="106" x2="205" y2="100" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <ellipse cx="178" cy="112" rx="10" ry="18" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="94" y1="108" x2="112" y2="107" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#ra1)"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">REM ASSEGUT - Politja</text>
+  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - tires el cable cap al ventre</text>
+  <text x="62" y="100" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">tira</text>
+  <text x="195" y="80" font-size="8" fill="#EF9F27" font-family="sans-serif">esquena</text>
+  <text x="195" y="90" font-size="8" fill="#EF9F27" font-family="sans-serif">RECTA!</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Colzes enrere fins juntar omoplats - No et tombis enrere</text>
+</svg>`,
+
+  press_militar: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="pm1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="186" y="30" width="16" height="132" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="102" y="126" width="80" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="122" y="140" width="40" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="172" y="78" width="16" height="60" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <line x1="172" y1="96" x2="150" y2="94" stroke="#7a4a90" stroke-width="3"/>
+  <circle cx="150" cy="94" r="5" fill="#C06FD4" opacity=".7"/>
+  <line x1="172" y1="70" x2="152" y2="64" stroke="#7a4a90" stroke-width="2" stroke-dasharray="4,3" opacity=".4"/>
+  <circle cx="152" cy="64" r="4" fill="#C06FD4" opacity=".35"/>
+  <circle cx="138" cy="72" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="138" y1="86" x2="138" y2="128" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="138" y1="126" x2="104" y2="126" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="138" y1="126" x2="172" y2="126" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="104" y1="126" x2="100" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="138" y1="90" x2="152" y2="64" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="138" y1="90" x2="150" y2="94" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <line x1="148" y1="90" x2="148" y2="66" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pm1)"/>
+  <circle cx="138" cy="90" r="11" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PRESS MILITAR - Maquina</text>
+  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - empenys les manetes cap amunt</text>
+  <text x="120" y="58" font-size="8" fill="#EF9F27" font-family="sans-serif">amunt</text>
+  <text x="100" y="92" font-size="8" fill="#EF9F27" font-family="sans-serif">espatlla</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Quasi esten el brac a dalt - Torna fins colzes a alcada espatlla</text>
+</svg>`,
+
+  elevacio_lateral: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="el1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- POLITJA al terra esquerra -->
+  <rect x="14" y="130" width="16" height="38" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <circle cx="22" cy="134" r="7" fill="#1e1428" stroke="#7a4a90" stroke-width="2"/>
+  <circle cx="22" cy="134" r="3" fill="#7a4a90"/>
+  <text x="22" y="155" font-size="7" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">politja</text>
+  <text x="22" y="163" font-size="7" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">baixa</text>
+  <!-- CABLE del terra fins la ma -->
+  <line x1="29" y1="134" x2="104" y2="96" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="5,3" opacity=".7"/>
+  <!-- PERSONA de peu - vista FRONTAL clara -->
+  <!-- cos central -->
+  <circle cx="148" cy="60" r="15" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- tronc -->
+  <line x1="148" y1="75" x2="148" y2="128" stroke="#C06FD4" stroke-width="3"/>
+  <!-- cama esquerra -->
+  <line x1="148" y1="126" x2="132" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- cama dreta -->
+  <line x1="148" y1="126" x2="164" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- BRAC EN REPOS (dret) - penjant avall -->
+  <line x1="148" y1="88" x2="172" y2="112" stroke="#C06FD4" stroke-width="2.5" opacity=".5"/>
+  <text x="182" y="116" font-size="7.5" fill="#a87ab8" font-family="sans-serif">repòs</text>
+  <!-- BRAC ACTIU (esquerre) POSICIO BAIXA - puntejat -->
+  <line x1="148" y1="88" x2="124" y2="114" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <text x="106" y="122" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- BRAC ACTIU POSICIO ALTA (fins alcada espatlla) - solida -->
+  <line x1="148" y1="88" x2="104" y2="88" stroke="#C06FD4" stroke-width="4"/>
+  <!-- ma al final del brac actiu -->
+  <circle cx="104" cy="88" r="5" fill="#C06FD4" opacity=".7"/>
+  <!-- DELTOIDES destacat -->
+  <ellipse cx="136" cy="84" rx="13" ry="10" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="120" y="74" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">DELTOIDES</text>
+  <!-- FLETXA arc mostrant el moviment: de baix a banda -->
+  <path d="M 124 110 Q 100 102 104 88" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#el1)"/>
+  <!-- linia de referencia alcada espatlla -->
+  <line x1="90" y1="88" x2="170" y2="88" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="88" y="85" font-size="7" fill="#EF9F27" text-anchor="end" font-family="sans-serif">espatlla</text>
+  <!-- titol i instruccio -->
+  <text x="148" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">ELEVACIO LATERAL - Politja</text>
+  <text x="148" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista frontal - puges el brac fins alcada espatlla</text>
+  <text x="148" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Brac lleugerament doblegat - No passes de l'alcada de l'espatlla - Pes lleuger</text>
+</svg>`,
+
+  sentadilla_multipower: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="sm1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="66" y="12" width="12" height="155" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="202" y="12" width="12" height="155" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="62" y="72" width="156" height="9" rx="4" fill="#7a4a90" stroke="#C06FD4" stroke-width="1.5"/>
+  <circle cx="140" cy="52" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="65" x2="136" y2="95" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="136" y1="78" x2="82" y2="78" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="78" x2="198" y2="78" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="136" cy="108" r="6" fill="#C06FD4" opacity=".5"/>
+  <line x1="136" y1="108" x2="108" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="136" y1="108" x2="162" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="108" y1="132" x2="100" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="162" y1="132" x2="170" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="90" y1="167" x2="112" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="158" y1="167" x2="182" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="140" y1="108" x2="140" y2="70" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#sm1)"/>
+  <circle cx="110" cy="132" r="6" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5"/>
+  <circle cx="160" cy="132" r="6" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">SENTADILLA - Multipower</text>
+  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Posicio baixa - genolls seguint la direccio dels peus</text>
+  <text x="50" y="108" font-size="8" fill="#EF9F27" text-anchor="end" font-family="sans-serif">malucs</text>
+  <text x="188" y="132" font-size="8" fill="#EF9F27" font-family="sans-serif">genolls</text>
+  <text x="188" y="142" font-size="8" fill="#EF9F27" font-family="sans-serif">cap als</text>
+  <text x="188" y="152" font-size="8" fill="#EF9F27" font-family="sans-serif">peus!</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Pit amunt - Profunditat minima: cuixes paral.leles al terra</text>
+</svg>`,
+
+  hip_thrust: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="ht1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="130" y="96" width="120" height="18" rx="5" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="145" y="114" width="20" height="54" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="210" y="114" width="20" height="54" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <circle cx="204" cy="80" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="196" y1="88" x2="134" y2="100" stroke="#C06FD4" stroke-width="3"/>
+  <circle cx="118" cy="104" r="7" fill="#EF9F27" opacity=".4" stroke="#EF9F27" stroke-width="1.5"/>
+  <line x1="118" y1="104" x2="96" y2="134" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="96" y1="134" x2="88" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="70" y1="167" x2="106" y2="167" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="88" y1="110" x2="200" y2="88" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="6,4" opacity=".7"/>
+  <line x1="118" y1="128" x2="118" y2="106" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#ht1)"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">HIP THRUST - Gluti</text>
+  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Esquena recolzada al banc - Malucs amunt</text>
+  <text x="100" y="96" font-size="8" fill="#EF9F27" font-family="sans-serif">maluc amunt</text>
+  <text x="172" y="82" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">cos recte!</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Apreta el gluti fort 1 seg a dalt - Genolls 90 graus - No arquear la lumbar</text>
+</svg>`,
+
+  extensio_quad: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="eq1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- MAQUINA: estructura -->
+  <rect x="182" y="50" width="14" height="112" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="162" y="62" width="22" height="65" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <!-- SEIENT horitzontal -->
+  <rect x="82" y="108" width="82" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <!-- respatller vertical -->
+  <rect x="156" y="70" width="10" height="50" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <!-- RODET INFERIOR (on va el peu/turmell) -->
+  <rect x="56" y="128" width="22" height="12" rx="5" fill="#7a4a90" opacity=".7" stroke="#C06FD4" stroke-width="2"/>
+  <text x="67" y="149" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">rodet</text>
+  <text x="67" y="158" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">turmell</text>
+  <!-- PERSONA asseguda, vista lateral -->
+  <!-- cap -->
+  <circle cx="132" cy="64" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- tronc vertical -->
+  <line x1="132" y1="78" x2="132" y2="110" stroke="#C06FD4" stroke-width="3"/>
+  <!-- mans agafant manetes laterals -->
+  <line x1="132" y1="88" x2="158" y2="90" stroke="#C06FD4" stroke-width="2" opacity=".6"/>
+  <!-- CUIXA horitzontal (fixa) -->
+  <line x1="132" y1="110" x2="82" y2="112" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- CAMA BAIXA DOBLEGADA (posicio inicial - puntejat) -->
+  <line x1="82" y1="112" x2="74" y2="150" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
+  <text x="62" y="166" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- CAMA ESTESA (posicio final - solida i gruixuda) -->
+  <line x1="82" y1="112" x2="56" y2="134" stroke="#C06FD4" stroke-width="4"/>
+  <!-- PEU -->
+  <line x1="56" y1="134" x2="42" y2="142" stroke="#C06FD4" stroke-width="3"/>
+  <!-- QUADRICEPS destacat (davant de la cuixa) -->
+  <rect x="56" y="108" width="28" height="10" rx="4" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <text x="70" y="99" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">QUAD</text>
+  <line x1="70" y1="101" x2="70" y2="107" stroke="#EF9F27" stroke-width="1.5"/>
+  <!-- FLETXA gran: de doblegat a estes -->
+  <path d="M 74 145 Q 52 138 56 128" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#eq1)"/>
+  <!-- fletxa baixada lenta -->
+  <text x="30" y="130" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="600">BAIXA</text>
+  <text x="30" y="140" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="600">LENT!</text>
+  <text x="30" y="150" font-size="7" fill="#f09595" text-anchor="middle" font-family="sans-serif">3 seg</text>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">EXTENSIO QUADRICEPS</text>
+  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - estes la cama i torna molt a poc a poc</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Para 1 seg a dalt apretant el quad - Baixada de 3 segons - Es on mes es treballa</text>
+</svg>`,
+
+  abductor: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ab1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
+    <marker id="ab2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+  </defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- seient i suport -->
+  <rect x="102" y="108" width="76" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="120" y="122" width="40" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <!-- COIXINETS - molt visibles, etiquetats clarament -->
+  <!-- coixinet esquerre (per FORA del genoll) -->
+  <rect x="32" y="112" width="26" height="22" rx="7" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="2.5"/>
+  <text x="45" y="108" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <text x="45" y="118" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">FORA</text>
+  <!-- coixinet dret -->
+  <rect x="222" y="112" width="26" height="22" rx="7" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="2.5"/>
+  <text x="235" y="108" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <text x="235" y="118" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">FORA</text>
+  <!-- PERSONA (vista frontal) -->
+  <circle cx="140" cy="58" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="72" x2="140" y2="108" stroke="#C06FD4" stroke-width="3"/>
+  <!-- CUIXES TANCADES (inici - puntejat) -->
+  <line x1="140" y1="108" x2="100" y2="122" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <line x1="140" y1="108" x2="180" y2="122" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <!-- CUIXES OBERTES (final - solida) -->
+  <line x1="140" y1="108" x2="58" y2="122" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="140" y1="108" x2="222" y2="122" stroke="#C06FD4" stroke-width="4"/>
+  <!-- GENOLLS destacats -->
+  <circle cx="60" cy="122" r="7" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <circle cx="220" cy="122" r="7" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <!-- CAMES (tibies) baixant -->
+  <line x1="60" y1="129" x2="52" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="220" y1="129" x2="228" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <!-- FLETXES D'OBERTURA - grans i clares -->
+  <line x1="100" y1="118" x2="62" y2="122" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ab1)"/>
+  <line x1="180" y1="118" x2="218" y2="122" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ab2)"/>
+  <!-- text moviment -->
+  <text x="44" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">OBRE</text>
+  <text x="236" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">OBRE</text>
+  <!-- GLUTI MIG destacat -->
+  <text x="140" y="97" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">gluti mig</text>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">MAQUINA ABDUCTOR (OBRIR)</text>
+  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Coixinets PER FORA dels genolls - Obres les cames cap als costats</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Torna lentament cap al centre - No deixis que el pes tanqui sol</text>
+</svg>`,
+
+  bessons_assegut: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ba1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
+    <marker id="ba2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+  </defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- RESSALT per als peus (escalo) -->
+  <rect x="70" y="152" width="120" height="16" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <text x="130" y="164" font-size="7.5" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">ressalt</text>
+  <!-- SEIENT -->
+  <rect x="70" y="110" width="120" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="106" y="124" width="48" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <!-- COIXINET SOBRE ELS GENOLLS -->
+  <rect x="72" y="98" width="116" height="14" rx="5" fill="#7a4a90" opacity=".5" stroke="#C06FD4" stroke-width="2"/>
+  <text x="130" y="108" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">coixinet sobre genolls</text>
+  <!-- PERSONA asseguda, vista lateral (esquerra) -->
+  <!-- cap -->
+  <circle cx="130" cy="60" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- tronc recte -->
+  <line x1="130" y1="73" x2="130" y2="112" stroke="#C06FD4" stroke-width="3"/>
+  <!-- CUIXA horitzontal -->
+  <line x1="130" y1="110" x2="80" y2="112" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- CAMA (tibia) vertical -->
+  <line x1="80" y1="112" x2="82" y2="151" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- === PEU POSICIO ALTA (de puntes) - SOLIDA === -->
+  <line x1="70" y1="142" x2="92" y2="151" stroke="#C06FD4" stroke-width="4"/>
+  <text x="56" y="140" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">AMUNT</text>
+  <!-- === PEU POSICIO BAIXA (talo avall) - PUNTEJAT === -->
+  <line x1="70" y1="160" x2="92" y2="153" stroke="#C06FD4" stroke-width="2.5" stroke-dasharray="5,3" opacity=".5"/>
+  <text x="54" y="164" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- BESSÓ destacat (part del darrere de la cama) -->
+  <rect x="72" y="128" width="14" height="26" rx="5" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="2"/>
+  <text x="55" y="138" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">BESSO</text>
+  <line x1="64" y1="138" x2="72" y2="138" stroke="#EF9F27" stroke-width="1.5"/>
+  <!-- FLETXA moviment: talo puja de puntes -->
+  <path d="M 80 160 Q 62 155 68 143" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ba1)"/>
+  <!-- zona de baixada -->
+  <text x="222" y="50" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Puja</text>
+  <text x="222" y="62" font-size="8.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">de puntes</text>
+  <text x="222" y="80" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Baixa fins</text>
+  <text x="222" y="92" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">sentir</text>
+  <text x="222" y="104" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">estirament</text>
+  <!-- linia divisoria -->
+  <line x1="190" y1="44" x2="190" y2="112" stroke="#3a1f50" stroke-width="1"/>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">BESSONS ASSEGUT - Vista lateral</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Puja de puntes alt - Para 1 seg - Baixa lent fins estirament</text>
+</svg>`,
+
+  premsa_cames: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="pc1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <rect x="12" y="30" width="130" height="130" rx="6" fill="#1a0f28" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="20" y="88" width="55" height="60" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <rect x="134" y="50" width="60" height="55" rx="4" fill="#C06FD4" opacity=".15" stroke="#C06FD4" stroke-width="2"/>
+  <circle cx="40" cy="70" r="12" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="40" y1="82" x2="75" y2="90" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="65" y1="90" x2="130" y2="78" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="65" y1="92" x2="130" y2="104" stroke="#C06FD4" stroke-width="3"/>
+  <rect x="130" y="72" width="16" height="36" rx="3" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="1.5"/>
+  <line x1="152" y1="90" x2="170" y2="90" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pc1)"/>
+  <circle cx="130" cy="78" r="5" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="1.5"/>
+  <circle cx="130" cy="104" r="5" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="1.5"/>
+  <text x="180" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PREMSA DE CAMES</text>
+  <text x="180" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Estas reclinada - Empenys la plataforma amb els peus</text>
+  <text x="185" y="80" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">empeny</text>
+  <text x="115" y="65" font-size="8" fill="#EF9F27" font-family="sans-serif">genoll</text>
+  <text x="180" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Peus a amplada de malucs - Genolls NO cap endins - No bloquejar</text>
+</svg>`,
+
+  curl_isquio: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="ci1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- MAQUINA estructura dreta -->
+  <rect x="182" y="55" width="14" height="107" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="162" y="68" width="22" height="58" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <!-- SEIENT -->
+  <rect x="90" y="108" width="74" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="110" y="122" width="34" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <!-- RODET SUPERIOR (sobre la cuixa) -->
+  <rect x="90" y="96" width="74" height="13" rx="5" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <text x="127" y="106" font-size="7.5" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">rodet cuixa (aguanta la cuixa)</text>
+  <!-- RODET INFERIOR (sobre el turmell) -->
+  <rect x="46" y="130" width="24" height="13" rx="5" fill="#C06FD4" opacity=".6" stroke="#C06FD4" stroke-width="2"/>
+  <text x="58" y="126" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">rodet</text>
+  <text x="58" y="118" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">turmell</text>
+  <!-- PERSONA asseguda, vista lateral -->
+  <!-- cap -->
+  <circle cx="138" cy="64" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- tronc recte -->
+  <line x1="138" y1="77" x2="138" y2="110" stroke="#C06FD4" stroke-width="3"/>
+  <!-- CUIXA horitzontal (fixa) -->
+  <line x1="138" y1="108" x2="90" y2="110" stroke="#C06FD4" stroke-width="4"/>
+  <!-- CAMA ESTESA (inici - puntejat) -->
+  <line x1="90" y1="110" x2="48" y2="108" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
+  <circle cx="48" cy="108" r="4" fill="#C06FD4" opacity=".3"/>
+  <text x="36" y="106" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- CAMA DOBLEGADA (final - solida i gruixuda) -->
+  <line x1="90" y1="110" x2="58" y2="140" stroke="#C06FD4" stroke-width="4"/>
+  <!-- peu -->
+  <line x1="58" y1="140" x2="46" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <!-- ISQUIO (darrere de la cuixa) destacat -->
+  <rect x="58" y="108" width="34" height="10" rx="4" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <text x="75" y="98" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">ISQUIO</text>
+  <line x1="75" y1="100" x2="75" y2="107" stroke="#EF9F27" stroke-width="1.5"/>
+  <!-- FLETXA ARC: de estes a doblegat -->
+  <path d="M 50 107 Q 42 126 56 138" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ci1)"/>
+  <!-- aviso BAIXA LENT -->
+  <text x="222" y="100" font-size="8.5" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="700">ATENCIO!</text>
+  <text x="222" y="114" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">Torna a dalt</text>
+  <text x="222" y="126" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">molt a poc</text>
+  <text x="222" y="138" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">a poc</text>
+  <text x="222" y="150" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">(3-4 seg!)</text>
+  <line x1="196" y1="90" x2="196" y2="160" stroke="#3a1f50" stroke-width="1"/>
+  <!-- titol -->
+  <text x="130" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">CURL ISQUIOTIBIALS - Assegut</text>
+  <text x="130" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - doblega la cama cap avall enrere</text>
+  <text x="130" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">La tornada (estes) es on es treballa - 3-4 seg pujant</text>
+</svg>`,
+
+  aductor: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ad1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
+    <marker id="ad2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+  </defs>
+  <!-- terra -->
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <!-- seient i suport -->
+  <rect x="102" y="108" width="76" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="120" y="122" width="40" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <!-- COIXINETS PER DINS dels genolls - molt ben diferenciats de l'abductor -->
+  <rect x="88" y="114" width="24" height="20" rx="6" fill="#C06FD4" opacity=".55" stroke="#C06FD4" stroke-width="2.5"/>
+  <text x="100" y="110" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <text x="100" y="126" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">DINS</text>
+  <rect x="168" y="114" width="24" height="20" rx="6" fill="#C06FD4" opacity=".55" stroke="#C06FD4" stroke-width="2.5"/>
+  <text x="180" y="110" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <text x="180" y="126" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">DINS</text>
+  <!-- PERSONA (vista frontal) -->
+  <circle cx="140" cy="58" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="140" y1="72" x2="140" y2="108" stroke="#C06FD4" stroke-width="3"/>
+  <!-- CUIXES OBERTES (inici - puntejat) -->
+  <line x1="140" y1="108" x2="76" y2="124" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <line x1="140" y1="108" x2="204" y2="124" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <text x="64" y="132" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <text x="218" y="132" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- CUIXES TANCADES (final - solida i gruixuda) -->
+  <line x1="140" y1="108" x2="100" y2="118" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="140" y1="108" x2="180" y2="118" stroke="#C06FD4" stroke-width="4"/>
+  <!-- GENOLLS final -->
+  <circle cx="100" cy="118" r="6" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <circle cx="180" cy="118" r="6" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
+  <!-- cames -->
+  <line x1="100" y1="124" x2="94" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="180" y1="124" x2="186" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <!-- ADDUCTORS zona interna destacada -->
+  <text x="140" y="97" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">adductors</text>
+  <text x="140" y="107" font-size="7" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">(cara interna cuixa)</text>
+  <!-- FLETXES TANCAMENT - grans i clares -->
+  <line x1="76" y1="121" x2="100" y2="118" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ad1)"/>
+  <line x1="204" y1="121" x2="180" y2="118" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ad2)"/>
+  <text x="54" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">TANCA</text>
+  <text x="228" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">TANCA</text>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">MAQUINA ADDUCTOR (TANCAR)</text>
+  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Coixinets PER DINS dels genolls - Tanques les cames cap al centre</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Torna lentament a la posicio oberta - No deixis caure el pes</text>
+</svg>`,
+
+  planxa: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <line x1="10" y1="148" x2="270" y2="148" stroke="#3a1f50" stroke-width="2"/>
+  <circle cx="222" cy="106" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="212" y1="114" x2="206" y2="118" stroke="#C06FD4" stroke-width="2.5"/>
+  <line x1="206" y1="118" x2="74" y2="122" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="196" y1="120" x2="194" y2="147" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="194" y1="147" x2="172" y2="147" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="140" y1="121" x2="138" y2="147" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="138" y1="147" x2="116" y2="147" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="74" y1="122" x2="54" y2="147" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="54" y1="147" x2="42" y2="147" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="40" y1="112" x2="230" y2="108" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="7,5" opacity=".7"/>
+  <rect x="118" y="116" width="60" height="12" rx="4" fill="#C06FD4" opacity=".2" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="148" y="126" font-size="8.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">CORE</text>
+  <text x="40" y="100" font-size="7" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">cos recte</text>
+  <text x="76" y="106" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">NO cul amunt</text>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PLANXA ABDOMINAL</text>
+  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - cos horitzontal recte com una taula</text>
+  <text x="183" y="160" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">avantbracos a terra</text>
+  <text x="140" y="170" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Umbilical endins - Respira normalment - 20-45 seg per serie</text>
+</svg>`,
+
+  crunch: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="cr1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <!-- terra -->
+  <line x1="10" y1="148" x2="270" y2="148" stroke="#3a1f50" stroke-width="2"/>
+  <!-- POSICIO INICIAL: estirada (puntejat) -->
+  <circle cx="228" cy="128" r="11" fill="none" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="4,3" opacity=".45"/>
+  <line x1="218" y1="134" x2="100" y2="138" stroke="#C06FD4" stroke-width="2" stroke-dasharray="4,3" opacity=".45"/>
+  <text x="228" y="118" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <!-- POSICIO FINAL: mig incorporada (solida) -->
+  <!-- cap incorporat ~30 graus -->
+  <circle cx="210" cy="100" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <!-- tronc inclinat -->
+  <line x1="200" y1="110" x2="108" y2="132" stroke="#C06FD4" stroke-width="4"/>
+  <!-- mans darrere el cap -->
+  <line x1="210" y1="108" x2="196" y2="116" stroke="#C06FD4" stroke-width="2"/>
+  <line x1="210" y1="108" x2="222" y2="116" stroke="#C06FD4" stroke-width="2"/>
+  <ellipse cx="210" cy="117" rx="9" ry="5" fill="#7a4a90" opacity=".5"/>
+  <text x="232" y="118" font-size="7.5" fill="#a87ab8" font-family="sans-serif">mans</text>
+  <!-- CUIXA horitzontal (genolls DOBLEGATS - important!) -->
+  <line x1="108" y1="132" x2="80" y2="147" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- TIBIA vertical (genoll doblegat) -->
+  <line x1="80" y1="147" x2="52" y2="110" stroke="#C06FD4" stroke-width="3.5"/>
+  <!-- GENOLL destacat -->
+  <circle cx="80" cy="147" r="7" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="2"/>
+  <text x="80" y="163" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">genoll</text>
+  <text x="80" y="173" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">DOBLEGAT</text>
+  <!-- PEU pla a terra -->
+  <line x1="36" y1="148" x2="62" y2="148" stroke="#C06FD4" stroke-width="4"/>
+  <text x="48" y="162" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">peu pla</text>
+  <!-- ZONA ABDOMINALS destacada (mig del tronc) -->
+  <rect x="118" y="122" width="62" height="14" rx="5" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="2"/>
+  <text x="149" y="132" font-size="8.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">ABDOMINALS</text>
+  <!-- FLETXA ARC: moviment d'incorporar-se -->
+  <path d="M 210 130 Q 215 116 210 102" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#cr1)"/>
+  <text x="240" y="116" font-size="8" fill="#EF9F27" font-family="sans-serif">puja</text>
+  <text x="240" y="127" font-size="8" fill="#EF9F27" font-family="sans-serif">~30°</text>
+  <!-- error comu: NO estirar coll -->
+  <text x="196" y="86" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">cap i coll</text>
+  <text x="196" y="96" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">van junts!</text>
+  <!-- titol -->
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">CRUNCH ABDOMINAL</text>
+  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - genolls doblegats, t incorpores uns 30 graus</text>
+  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">No estires el coll - Puja controlat - Baixa lent sense rebot</text>
+</svg>`
+
+};
+
+// ═══════════════════════════════════════════
+// GYM DATA — Rutina definitiva
+// ═══════════════════════════════════════════
+// TORSO  (6): Press pit, Obertura pit, Lat pulldown, Rem assegut, Press militar, Elevacio lateral
+// CAMES A(5): Sentadilla multipower, Hip thrust, Extensio quad, Abductor, Bessons assegut
+// CAMES B(6): Premsa cames, Curl isquio, Hip thrust, Adductor, Planxa, Crunch
+const GYM = {
+  TORSO: {
+    label: 'Torso - Pit, Esquena i Espatlla',
+    exercicis: [
+      {
+        id: 'tor_0', name: 'Maquina press pit assegut', mat: 'Maquina press pit', series: 3, svg: 'premsa_pit',
+        instruccions: 'Seu a la maquina i ajusta el seient: les manetes han d\'estar a l\'alcada del pit, no de les espatlles. Posa l\'esquena ben recolzada al respatller. Agafa les manetes amb les dues mans, palmells mirant endavant. Empeny cap endavant fins que els bracos quasi s\'estenin (sense bloquejar el colze!) i torna enrere lentament fins sentir estirament al pit.',
+        tip: 'Porta els omoplats cap enrere i avall durant tot el moviment. Respira fora quan empenyes, dins quan tornes.'
+      },
+      {
+        id: 'tor_1', name: 'Obertura pit - Pec Deck', mat: 'Maquina Pec Deck', series: 3, svg: 'obertura_pit',
+        instruccions: 'Ajusta el seient perque quan poses els colzes als coixinets quedin exactament a l\'alcada del pit. Els colzes formen un angle de 90 graus. Tanca els dos bracos alhora cap al centre com si abracessis un arbre gran. Quan arribin al mig para 1 segon apretant i torna lentament a la posicio oberta.',
+        tip: 'Imagina que el moviment ve del pit, no dels bracos. Baixa el pes si no pots controlar el retorn.'
+      },
+      {
+        id: 'tor_2', name: 'Lat Pulldown - barra ampla', mat: 'Maquina politja alta', series: 3, svg: 'lat_pulldown',
+        instruccions: 'Seu i posa les cuixes sota el rodet de subjeccios per fixar-te. Agafa la barra amb les mans mes amples que les espatlles, palmells mirant cap endavant. Tira la barra cap avall fins que toqui per sota del mento, portant els colzes cap als costats i avall. Torna amunt controlant el moviment.',
+        tip: 'Pensa: les mans son ganxos, el moviment el fan els colzes cap als butxacons. No tanquis del tot els bracos amunt.'
+      },
+      {
+        id: 'tor_3', name: 'Rem assegut - politja', mat: 'Politja baixa + seient', series: 3, svg: 'rem_assegut',
+        instruccions: 'Seu al banc, cames lleugerament doblegades i peus al suport. Agafa l\'agafador. Partint amb els bracos estirats i l\'esquena recta, tira l\'agafador cap al ventre portant els colzes enrere. Quan toca el ventre intenta juntar els omoplats. Torna lentament estirant els bracos. L\'esquena SEMPRE recta, NO et tombis enrere.',
+        tip: 'L\'error mes comu: tombar-se enrere per fer trampa. Tot el moviment ha de venir dels bracos i l\'esquena.'
+      },
+      {
+        id: 'tor_4', name: 'Press militar - maquina', mat: 'Maquina press espatlles', series: 3, svg: 'press_militar',
+        instruccions: 'Ajusta el seient perque les manetes quedin a l\'alcada de les espatlles o una mica per sobre. Recolza l\'esquena al respatller. Agafa les manetes i empeny cap amunt fins que els bracos quasi s\'estenin (sense bloquejar el colze). Torna controlant el descens fins que els colzes baixin a l\'alcada de les espatlles.',
+        tip: 'No arquegis la lumbar per guanyar recorregut. Si notes pressio al coll, abaixa el seient.'
+      },
+      {
+        id: 'tor_5', name: 'Elevacio lateral - politja baixa', mat: 'Politja baixa (unilateral)', series: 3, svg: 'elevacio_lateral',
+        instruccions: 'Posa-te de costat a la politja. Agafa l\'agafador amb la ma del costat contrari (el brac creuada davant el cos). Amb el colze lleugerament doblegat puja el brac cap al costat fins arribar a l\'alcada de l\'espatlla. Torna lentament. Fes totes les repeticions d\'un costat i canvia.',
+        tip: 'Pes molt lleuger. Si el cos es balanceja per ajudar, redueix el pes. El moviment es molt petit i controlat.'
+      }
+    ]
+  },
+
+  CAMES_A: {
+    label: 'Cames A - Sentadilla, Gluti i Quad',
+    exercicis: [
+      {
+        id: 'ca_0', name: 'Sentadilla - Multipower', mat: 'Maquina Multipower', series: 4, svg: 'sentadilla_multipower',
+        instruccions: 'Col.loca la barra als muscles (no al coll!), a l\'alcada dels omoplats. Peus a l\'amplada de malucs o una mica mes oberts, puntes lleugerament cap a fora. Baixa com si anessis a seure en una cadira: pit amunt, genolls seguint la mateixa direccio que els dits del peu (NO cap endins). Baixa fins que les cuixes quedin paral.leles al terra o fins on puguis sense perdre la postura. Empeny cap amunt.',
+        tip: 'Exercici principal del dia. El primer dia usa molt poc pes per aprendre el moviment. Genolls cap als peus es la clau.'
+      },
+      {
+        id: 'ca_1', name: 'Hip Thrust - gluti', mat: 'Maquina hip thrust o banc', series: 3, svg: 'hip_thrust',
+        instruccions: 'Recolza l\'esquena al banc just a l\'alcada dels omoplats (no del coll). Posa els peus plans al terra a l\'amplada dels malucs, genolls a 90 graus. Baixa el maluc cap al terra i puja explosivament fins que el cos formi una linia recta de genolls a espatlles. Apreta fort el gluti durant 1 segon a dalt.',
+        tip: 'No hiperestenguis la lumbar a dalt. Si el cos forma una linia recta ets en la posicio correcta. El moviment parteix del maluc.'
+      },
+      {
+        id: 'ca_2', name: 'Extensio quadriceps', mat: 'Maquina extensio', series: 3, svg: 'extensio_quad',
+        instruccions: 'Seu a la maquina i ajusta el rodet inferior per sobre del turmell (no al peu). Agafa les manetes laterals. Esten les cames cap amunt fins que quedin gairebe rectes, para 1 segon apretant fort el quadriceps (el davant de la cuixa), i baixa molt molt a poc a poc en 3 segons. La baixada controlada es on mes es treballa.',
+        tip: 'Si notes dolor al genoll, para immediatament. Usa poc pes i prioritza la tecnica i el control.'
+      },
+      {
+        id: 'ca_3', name: 'Maquina abductor - obrir', mat: 'Maquina abductor', series: 3, svg: 'abductor',
+        instruccions: 'Seu a la maquina i posa els coixinets a la part EXTERIOR dels genolls (per fora). Esquena recolzada, seient ben enganxada. Obre les cames cap als costats tot el que puguis fins notar resistencia maxima, para un moment, i torna lentament cap al centre. No deixis que el pes tanqui les cames sol.',
+        tip: 'Assegura que els coixinets van per fora dels genolls. Treballes el gluti mitja, important per l\'estabilitat del maluc.'
+      },
+      {
+        id: 'ca_4', name: 'Bessons assegut - maquina', mat: 'Maquina bessons assegut', series: 3, svg: 'bessons_assegut',
+        instruccions: 'Seu a la maquina amb el coixinet sobre els genolls i els avantpeus (la part davant del peu) recolzats al ressalt, els talons queden a l\'aire. Puja de puntes tant com puguis, para 1 segon a dalt, i baixa fins que el talo caigui per sota del ressalt per notar l\'estirament del besso. Moviment lent i controlat.',
+        tip: 'La maquina asseguda treballa el soli (muscul profund sota el besso). Moviment controlat, no rebotis a baix.'
+      }
+    ]
+  },
+
+  CAMES_B: {
+    label: 'Cames B - Isquios, Core i Maquines',
+    exercicis: [
+      {
+        id: 'cb_0', name: 'Premsa de cames', mat: 'Maquina prensa', series: 4, svg: 'premsa_cames',
+        instruccions: 'Seu (o reclina-te) a la maquina i posa els peus a la plataforma a l\'amplada dels malucs. Els genolls han d\'estar alineats amb els peus (no caure cap endins!). Baixa controlant la plataforma fins que els genolls facin un angle de 90 graus i empeny fins quasi estendre les cames. NO bloquejar els genolls al final.',
+        tip: 'Genolls sempre seguint la mateixa linia que els dits del peu. Si cauen cap endins, menys pes.'
+      },
+      {
+        id: 'cb_1', name: 'Curl isquiotibials assegut', mat: 'Maquina curl assegut', series: 3, svg: 'curl_isquio',
+        instruccions: 'Seu a la maquina i ajusta: el rodet superior ha de quedar per sobre del genoll (a la cuixa) i el rodet inferior per sobre del turmell. Agafa les manetes laterals. Doblega les cames tirant els talons enrere i avall fins que formin un angle de 90 graus o una mica mes. Ara torna molt molt a poc a poc (3-4 segons cap amunt). Aqui es on es treballa de veritat.',
+        tip: 'El moviment de tornada (estenent la cama) ha de durar 3-4 segons. Si et precipites a pujar, estras perdent la meitat del treball.'
+      },
+      {
+        id: 'cb_2', name: 'Hip Thrust - gluti', mat: 'Maquina hip thrust o banc', series: 3, svg: 'hip_thrust',
+        instruccions: 'Igual que el dia A: esquena al banc a l\'alcada dels omoplats, peus plans a l\'amplada dels malucs, genolls a 90 graus. Baixa el maluc i puja fins linia recta. Apreta fort el gluti 1 segon a dalt. Si el dia A et va anar be, intenta afegir una petita carrega extra o una repeticio mes.',
+        tip: 'La progressio lenta i constant es clau. No cal molta diferencia entre dies, amb una mica ja n\'hi ha prou.'
+      },
+      {
+        id: 'cb_3', name: 'Maquina adductor - tancar', mat: 'Maquina adductor', series: 3, svg: 'aductor',
+        instruccions: 'Seu a la maquina i posa els coixinets a la part INTERIOR dels genolls (per dins). Les cames comencen obertes. Tanca les cames cap al centre fins que els coixinets gairebe es toquin, para un moment, i torna lentament a la posicio oberta sense deixar que el pes les obri bruscament.',
+        tip: 'Assegura que els coixinets van PER DINS dels genolls. Treballes els adductors (cara interna de la cuixa).'
+      },
+      {
+        id: 'cb_4', name: 'Planxa abdominal', mat: 'Sol / estora', series: 3, svg: 'planxa',
+        instruccions: 'Posa-te boca avall recolzada als AVANTBRACOS (no a les mans) i als dits dels peus. El cos ha de formar una linia recta de cap a talons: el cul no ha de pujar ni caure. Mira al terra. Porta el melic cap endins com si intentessis tocar la columna amb el melic. Mante la posicio el temps que puguis respirant normalment.',
+        tip: 'Si et tremolen molt, para un genoll a terra i reposa 10 seg. Progressa de 20 seg fins a 45-60 seg per serie.',
+        isTime: true
+      },
+      {
+        id: 'cb_5', name: 'Crunch abdominal', mat: 'Sol / estora', series: 3, svg: 'crunch',
+        instruccions: 'Estira-te d\'esquena al terra amb els genolls doblegats i els peus plans al terra (no estenguis les cames!). Posa les mans darrere el cap sense entrellacar els dits, o creuades al pit. Des d\'aquesta posicio incorpora el cap i les espatlles cap amunt uns 30 graus (no has d\'arribar a seure del tot). Para un segon a dalt i baixa lentament. NO agafis impuls amb el coll.',
+        tip: 'Errors comuns: estirar el coll cap amunt, o agafar impuls. Moviment petit, controlat i conscient de l\'abdominal.'
+      }
+    ]
+  }
+};
+
+const GYM_TABS = ['TORSO','CAMES_A','CAMES_B'];
+let pesChart = null, grasaChart = null;
+
+function today(){ return new Date().toISOString().slice(0,10); }
+function fmtDate(d){ if(!d) return ''; const p=d.split('-'); return `${p[2]}/${p[1]}/${p[0]}`; }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'), 2200); }
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function goMainTab(i){
+  document.querySelectorAll('.tab').forEach((t,j) => t.classList.toggle('on', i===j));
+  document.querySelectorAll('.page').forEach((p,j) => p.classList.toggle('on', i===j));
+  document.getElementById('hdr-title').textContent = ['Gym','Pes'][i];
+  if(i===1) renderPesTab();
+}
+
+let currentGymTab = 'TORSO';
+function goGymTab(tipus){
+  currentGymTab = tipus;
+  GYM_TABS.forEach(t => {
+    document.getElementById('subtab-'+t).classList.toggle('on', t===tipus);
+    document.getElementById('gympage-'+t).classList.toggle('on', t===tipus);
+  });
+  const labels = {TORSO:'Torso', CAMES_A:'Cames A', CAMES_B:'Cames B'};
+  document.getElementById('hdr-title').textContent = labels[tipus] || tipus;
+}
+
+// ═══════════════════════════════════════════
+// RENDER GYM EXERCISES
+// ═══════════════════════════════════════════
+function getLastSession(tipus){
+  const sessions = S.arr('gym_sessions').filter(s => s.tipus===tipus);
+  return sessions.length ? sessions[sessions.length-1] : null;
+}
+
+function renderExercises(tipus){
+  const g = GYM[tipus];
+  const last = getLastSession(tipus);
+  const id = tipus.toLowerCase();
+  const container = document.getElementById(id+'-exercises');
+
+  const dateEl = document.getElementById(id+'-last-date');
+  if(last) dateEl.textContent = `Última sessió: ${fmtDate(last.data)}`;
+  else dateEl.textContent = 'Sense sessions anteriors';
+
+  let html = '';
+  g.exercicis.forEach((ex, ei) => {
+    let lastEx = null;
+    if(last) lastEx = last.exercicis.find(e => e.id===ex.id);
+    const anyUpFlag = lastEx && lastEx.series.some(s => s.puja);
+    const badge = lastEx
+      ? (anyUpFlag ? '<span class="badge-up">↑ Puja pes</span>' : '<span class="badge-ok">✓ Mantén</span>')
+      : '';
+
+    // Determinar unitat (planxa = temps en seg)
+    const isPlanxa = ex.id === 'cb_4' || ex.id === 'cb_5';
+    const unitLabel = isPlanxa ? 'Seg / Rep' : 'Pes (kg)';
+    const unitPh = isPlanxa ? '—' : 'kg';
+
+    html += `<div class="ex-card" id="ex-${tipus}-${ei}">
+      <div class="ex-hdr" onclick="toggleEx('${tipus}',${ei})">
+        <div style="flex:1;min-width:0">
+          <div class="ex-name">${ex.name}</div>
+          <div class="ex-meta"><span>${ex.mat}</span>${badge}</div>
+        </div>
+        <div class="ex-arrow">▾</div>
+      </div>
+      <div class="ex-body">`;
+
+    // Il·lustració SVG
+    if(ex.svg && SVG[ex.svg]){
+      html += `<div class="ex-svg-wrap">${SVG[ex.svg]}</div>`;
+    }
+
+    // Instruccions detallades
+    html += `<div class="ex-instruccions">
+      <div class="ex-instruccions-title">📋 Com ho fas</div>
+      <div class="ex-instruccions-text">${ex.instruccions}</div>
+    </div>`;
+
+    // Consell extra
+    if(ex.tip){
+      html += `<div class="ex-tip">💡 ${ex.tip}</div>`;
+    }
+
+    // Referència última sessió
+    if(lastEx){
+      const seriesRef = lastEx.series.filter(s => s.kg||s.reps);
+      if(seriesRef.length){
+        html += `<div class="ex-ref"><div class="ex-ref-title">📊 Última sessió · ${fmtDate(last.data)}</div><div class="ex-ref-row">`;
+        seriesRef.forEach((s,si) => {
+          html += `<div class="ex-ref-serie">
+            <div class="ex-ref-s">S${si+1}</div>
+            <div class="ex-ref-v">${s.kg||'—'}×${s.reps||'—'}</div>
+            ${s.puja ? '<div class="ex-ref-flag">↑ pujar</div>' : ''}
+          </div>`;
+        });
+        html += `</div></div>`;
+      }
+    }
+
+    // Taula sèries
+    html += `<div class="series-hdr"><span>#</span><span>${unitLabel}</span><span>${isPlanxa?'Durada':'Reps'}</span><span>Pujar?</span></div>`;
+    for(let s=0; s<ex.series; s++){
+      const ref = lastEx ? lastEx.series[s] : null;
+      const phKg = ref&&ref.kg ? ref.kg : unitPh;
+      const phReps = ref&&ref.reps ? ref.reps : (isPlanxa?'seg':'reps');
+      html += `<div class="serie-row">
+        <div class="serie-n">${s+1}</div>
+        <input class="serie-in" type="number" inputmode="decimal" step="0.5" placeholder="${phKg}" id="kg-${tipus}-${ei}-${s}">
+        <input class="serie-in" type="number" inputmode="numeric" placeholder="${phReps}" id="reps-${tipus}-${ei}-${s}">
+        <button class="puja-btn" id="puja-${tipus}-${ei}-${s}" onclick="togglePuja('${tipus}',${ei},${s})">↑ Pujar</button>
+      </div>`;
+    }
+
+    html += `</div></div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function toggleEx(tipus, i){
+  document.getElementById(`ex-${tipus}-${i}`).classList.toggle('open');
+}
+
+function togglePuja(tipus, ei, si){
+  const btn = document.getElementById(`puja-${tipus}-${ei}-${si}`);
+  btn.classList.toggle('on');
+  btn.textContent = btn.classList.contains('on') ? '↑ Pujar ✓' : '↑ Pujar';
+}
+
+// ═══════════════════════════════════════════
+// SAVE SESSION
+// ═══════════════════════════════════════════
+function saveSession(tipus){
+  const g = GYM[tipus];
+  const id = tipus.toLowerCase();
+  const data = document.getElementById(id+'-date').value || today();
+
+  const exercicis = g.exercicis.map((ex, ei) => {
+    const series = [];
+    for(let s=0; s<ex.series; s++){
+      const kg = document.getElementById(`kg-${tipus}-${ei}-${s}`)?.value || '';
+      const reps = document.getElementById(`reps-${tipus}-${ei}-${s}`)?.value || '';
+      const puja = document.getElementById(`puja-${tipus}-${ei}-${s}`)?.classList.contains('on') || false;
+      series.push({kg, reps, puja});
+    }
+    return {id:ex.id, name:ex.name, series};
+  });
+
+  const hasDades = exercicis.some(ex => ex.series.some(s => s.kg||s.reps));
+  if(!hasDades){ showToast('⚠ Afegeix alguna dada primer'); return; }
+
+  S.push('gym_sessions', {tipus, data, exercicis, ts: Date.now()});
+  showToast('✅ Sessió guardada!');
+  renderExercises(tipus);
+  renderGymHist(tipus);
+}
+
+function clearForm(tipus){
+  const g = GYM[tipus];
+  g.exercicis.forEach((ex, ei) => {
+    for(let s=0; s<ex.series; s++){
+      const kg = document.getElementById(`kg-${tipus}-${ei}-${s}`);
+      const reps = document.getElementById(`reps-${tipus}-${ei}-${s}`);
+      const puja = document.getElementById(`puja-${tipus}-${ei}-${s}`);
+      if(kg) kg.value='';
+      if(reps) reps.value='';
+      if(puja){ puja.classList.remove('on'); puja.textContent='↑ Pujar'; }
+    }
+  });
+  showToast('Formulari buidat');
+}
+
+// ═══════════════════════════════════════════
+// GYM HISTORY
+// ═══════════════════════════════════════════
+function renderGymHist(tipus){
+  const sessions = S.arr('gym_sessions').filter(s => s.tipus===tipus).reverse();
+  const container = document.getElementById(tipus.toLowerCase()+'-hist');
+  if(!sessions.length){ container.innerHTML='<div style="color:var(--t3);font-size:12px;padding:6px 0">Sense sessions guardades</div>'; return; }
+
+  container.innerHTML = sessions.map((s, idx) => {
+    const realIdx = S.arr('gym_sessions').findIndex(ss => ss.ts===s.ts);
+    const exLines = s.exercicis.map(ex => {
+      const sr = ex.series.filter(s=>s.kg||s.reps).map((s,i)=>`S${i+1}:${s.kg||'?'}×${s.reps||'?'}${s.puja?' ↑':''}`).join(' ');
+      return sr ? `${ex.name}: ${sr}` : null;
+    }).filter(Boolean).join('\n');
+
+    return `<div class="gym-hist-card" id="ghc-${s.ts}">
+      <div class="gym-hist-hdr" onclick="document.getElementById('ghc-${s.ts}').classList.toggle('open')">
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--t)">${fmtDate(s.data)}</div>
+          <div style="font-size:10px;color:var(--t3);margin-top:2px">${s.exercicis.filter(ex=>ex.series.some(sr=>sr.kg)).length} exercicis registrats</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button onclick="event.stopPropagation();deleteSession(${realIdx},'${tipus}')" style="background:none;border:none;color:var(--t3);font-size:14px;cursor:pointer;padding:2px 6px">🗑</button>
+          <span style="color:var(--t3);font-size:13px">▾</span>
+        </div>
+      </div>
+      <div class="gym-hist-body" style="white-space:pre-line">${exLines||'Sense dades'}</div>
+    </div>`;
+  }).join('');
+}
+
+function deleteSession(i, tipus){
+  if(!confirm('Eliminar aquesta sessió?')) return;
+  const all = S.arr('gym_sessions');
+  all.splice(i,1);
+  S.set('gym_sessions', all);
+  renderExercises(tipus);
+  renderGymHist(tipus);
+  showToast('Sessió eliminada');
+}
+
+// ═══════════════════════════════════════════
+// PES TAB
+// ═══════════════════════════════════════════
+function renderPesTab(){
+  const pesos = S.arr('pesos');
+  const last = pesos.length ? pesos[pesos.length-1] : null;
+  const cfg = S.get('pes_config') || {};
+  const PARTIDA = cfg.partida || (last ? parseFloat(last.pes) : null);
+  const OBJECTIU = cfg.objectiu || null;
+
+  const pesActual = last ? parseFloat(last.pes) : null;
+
+  if(pesActual !== null){
+    document.getElementById('p-actual').textContent = pesActual.toFixed(1);
+  } else {
+    document.getElementById('p-actual').textContent = '—';
+  }
+
+  if(OBJECTIU && pesActual !== null){
+    const resta = parseFloat((pesActual - OBJECTIU).toFixed(1));
+    document.getElementById('p-queda').textContent = Math.max(0, resta).toFixed(1)+' kg';
+  } else {
+    document.getElementById('p-queda').textContent = '—';
+  }
+
+  if(PARTIDA && pesActual !== null){
+    const perdut = parseFloat((PARTIDA - pesActual).toFixed(1));
+    document.getElementById('p-perdut').textContent = perdut > 0 ? perdut.toFixed(1) : '0.0';
+    document.getElementById('p-perdut').className = 'sc-n '+(perdut>0?'cg':'');
+
+    if(OBJECTIU){
+      const pct = perdut>0 ? Math.min(100, Math.round(perdut/(PARTIDA-OBJECTIU)*100)) : 0;
+      document.getElementById('goal-bar').style.width = pct+'%';
+      document.getElementById('goal-pct-label').textContent = pct+'% assolit';
+    }
+    document.getElementById('goal-inici-label').textContent = `Inici ${PARTIDA} kg`;
+  }
+
+  if(OBJECTIU) document.getElementById('goal-obj-label').textContent = `Obj. ${OBJECTIU} kg`;
+
+  if(last && last.grasa) document.getElementById('p-grasa-act').textContent = last.grasa+'%';
+  if(last && last.musc) document.getElementById('p-musc-act').textContent = last.musc+' kg';
+
+  renderPesCharts(pesos, OBJECTIU);
+  renderPesHist(pesos);
+}
+
+function renderPesCharts(pesos, OBJECTIU){
+  const sorted = [...pesos].sort((a,b) => a.date<b.date?-1:1);
+  const labels = sorted.map(p => fmtDate(p.date));
+  const vals = sorted.map(p => parseFloat(p.pes));
+  const opts = {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}}
+    }
+  };
+
+  if(pesChart) pesChart.destroy();
+  const ctx1 = document.getElementById('chart-pes').getContext('2d');
+  const datasets = [{
+    data:vals, borderColor:'#C06FD4', borderWidth:2, fill:true,
+    backgroundColor:(c)=>{const gr=c.chart.ctx.createLinearGradient(0,0,0,120);gr.addColorStop(0,'rgba(192,111,212,0.3)');gr.addColorStop(1,'rgba(192,111,212,0)');return gr;},
+    tension:.3, pointRadius:4, pointBackgroundColor:'#C06FD4', pointBorderColor:'#0f0a14', pointBorderWidth:2
+  }];
+  if(OBJECTIU) datasets.push({
+    data:vals.map(()=>OBJECTIU), borderColor:'rgba(239,159,39,0.5)', borderWidth:1.5,
+    borderDash:[5,5], pointRadius:0, fill:false, tension:0
+  });
+  pesChart = new Chart(ctx1, {type:'line', data:{labels, datasets}, options:opts});
+
+  if(grasaChart) grasaChart.destroy();
+  const ctx2 = document.getElementById('chart-grasa').getContext('2d');
+  const gf = sorted.filter(p => p.grasa);
+  grasaChart = new Chart(ctx2, {type:'line', data:{
+    labels: gf.map(p=>fmtDate(p.date)),
+    datasets:[{
+      data:gf.map(p=>parseFloat(p.grasa)), borderColor:'#EF9F27', borderWidth:2, fill:true,
+      backgroundColor:'rgba(239,159,39,0.1)', tension:.3, pointRadius:3,
+      pointBackgroundColor:'#EF9F27', pointBorderColor:'#0f0a14', pointBorderWidth:1.5
+    }]
+  }, options:{...opts, scales:{
+    x:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+    y:{ticks:{color:'#5d3d6b',font:{size:9},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}
+  }}});
+}
+
+function renderPesHist(pesos){
+  const sorted = [...pesos].sort((a,b) => a.date<b.date?1:-1);
+  const container = document.getElementById('pes-hist');
+  if(!sorted.length){ container.innerHTML='<div style="color:var(--t3);font-size:12px;padding:10px 0">Sense mesures guardades</div>'; return; }
+  container.innerHTML = sorted.map((p,i) => {
+    const prev = sorted[i+1];
+    const delta = prev ? parseFloat((parseFloat(p.pes)-parseFloat(prev.pes)).toFixed(1)) : null;
+    const dc = delta!==null ? (delta<0?'cg':'cr') : '';
+    const dt = delta!==null ? `${delta>0?'+':''}${delta} kg` : '';
+    const origIdx = pesos.indexOf(p);
+    return `<div class="hi">
+      <div>
+        <div class="hi-date">${fmtDate(p.date)}</div>
+        <div class="hi-detail">${p.grasa?`Grasa ${p.grasa}%`:''} ${p.musc?`· Musc ${p.musc} kg`:''} ${p.notes?`<br>${p.notes}`:''}</div>
+      </div>
+      <div class="hi-right">
+        <div class="hi-val">${parseFloat(p.pes).toFixed(1)} kg</div>
+        ${dt ? `<div class="hi-delta ${dc}">${dt}</div>` : ''}
+        <button class="del-btn" onclick="deletePes(${origIdx})">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function savePes(){
+  const pes = document.getElementById('p-pes').value;
+  if(!pes){ showToast('⚠ Introdueix el pes'); return; }
+  const obj = document.getElementById('p-obj').value;
+  const pesFloat = parseFloat(pes);
+  const cfg = S.get('pes_config') || {};
+
+  // Primera mesura = punt de partida
+  if(!S.arr('pesos').length){
+    cfg.partida = pesFloat;
+  }
+  if(obj) cfg.objectiu = parseFloat(obj);
+  S.set('pes_config', cfg);
+
+  S.push('pesos', {
+    date: document.getElementById('p-data').value || today(),
+    pes: pesFloat,
+    grasa: document.getElementById('p-grasa').value || null,
+    musc: document.getElementById('p-musc').value || null,
+    notes: document.getElementById('p-notes-pes').value.trim() || null,
+    ts: Date.now()
+  });
+  ['p-pes','p-grasa','p-musc','p-notes-pes','p-obj'].forEach(id => document.getElementById(id).value='');
+  renderPesTab();
+  showToast('✅ Mesura guardada!');
+}
+
+function deletePes(i){
+  if(!confirm('Eliminar aquesta mesura?')) return;
+  const pesos = S.arr('pesos');
+  pesos.splice(i,1);
+  S.set('pesos', pesos);
+  renderPesTab();
+  showToast('Mesura eliminada');
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+function init(){
+  const now = new Date();
+  const dies = ['Diumenge','Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte'];
+  const mes = ['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
+  document.getElementById('hdr-date').textContent = `${dies[now.getDay()]} ${now.getDate()} ${mes[now.getMonth()]}`;
+
+  GYM_TABS.forEach(t => {
+    const id = t.toLowerCase();
+    document.getElementById(id+'-date').value = today();
+    renderExercises(t);
+    renderGymHist(t);
+  });
+}
+
+init();
+</script>
+</body>
+</html>
