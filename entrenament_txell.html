@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#1a0a1e">
+<meta name="theme-color" content="#080d16">
 <title>Txell · Gym</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --g:#C06FD4;--gd:#8e3fa0;--gl:rgba(192,111,212,0.15);
+  --g:#378add;--gd:#1e5a96;--gl:rgba(56,138,221,0.15);
   --a:#EF9F27;--al:rgba(239,159,39,0.15);
   --r:#E24B4A;--rl:rgba(226,75,74,0.15);
   --b:#378ADD;
-  --bg:#0f0a14;--bg2:#17101e;--bg3:#1e1428;--bg4:#261a32;
-  --card:#2a1d35;--card2:#2e2039;
+  --bg:#080d16;--bg2:#0e1420;--bg3:#141c2c;--bg4:#182338;
+  --card:#141c2c;--card2:#1c2842;
   --bdr:rgba(255,255,255,0.07);--bdr2:rgba(255,255,255,0.12);
-  --t:#f5eef8;--t2:#a87ab8;--t3:#5d3d6b;
+  --t:#eef4fc;--t2:#7a96ba;--t3:#465c80;
   --rad:14px;--radsm:9px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -51,9 +51,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 .btn:active{background:var(--gd)}
 .btn-sec{background:none;color:var(--t2);border:1px solid var(--bdr2);margin-top:7px}
 
-.sess-hdr{background:linear-gradient(135deg,#2a0d4a 0%,#3a0f5c 100%);border-radius:var(--rad);border:1px solid rgba(192,111,212,0.25);padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(192,111,212,0.12)}
-.sess-label{font-size:14px;font-weight:600;color:#e8b8f5;letter-spacing:-.1px}
-.sess-sub{font-size:10px;color:#b07acc;margin-top:2px}
+.sess-hdr{background:linear-gradient(135deg,#122a48 0%,#123a60 100%);border-radius:var(--rad);border:1px solid rgba(56,138,221,0.25);padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(56,138,221,0.12)}
+.sess-label{font-size:14px;font-weight:600;color:#cfe6ff;letter-spacing:-.1px}
+.sess-sub{font-size:10px;color:#7aa6d8;margin-top:2px}
 
 .ex-card{background:var(--bg3);border-radius:var(--radsm);border:1px solid var(--bdr);margin-bottom:8px;overflow:hidden}
 .ex-hdr{padding:11px 13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
@@ -65,12 +65,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 .ex-card.open .ex-body{display:block}
 
 .badge-up{background:rgba(239,159,39,.18);border:1px solid rgba(239,159,39,.35);color:#fac775;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
-.badge-ok{background:rgba(192,111,212,.12);border:1px solid rgba(192,111,212,.25);color:#c87de0;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
+.badge-ok{background:rgba(56,138,221,.12);border:1px solid rgba(56,138,221,.25);color:#7abaf7;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
 
 /* INSTRUCCIONS exercici */
-.ex-instruccions{background:rgba(192,111,212,0.07);border:1px solid rgba(192,111,212,0.2);border-radius:9px;padding:10px 12px;margin:10px 0 8px}
-.ex-instruccions-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#c87de0;margin-bottom:6px}
-.ex-instruccions-text{font-size:11px;color:#d9b4e8;line-height:1.7}
+.ex-instruccions{background:rgba(56,138,221,0.07);border:1px solid rgba(56,138,221,0.2);border-radius:9px;padding:10px 12px;margin:10px 0 8px}
+.ex-instruccions-title{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#7abaf7;margin-bottom:6px}
+.ex-instruccions-text{font-size:11px;color:#d3e6fb;line-height:1.7}
 
 /* SVG il·lustració */
 .ex-svg-wrap{background:rgba(0,0,0,0.2);border-radius:9px;margin:0 0 10px;overflow:hidden;display:flex;justify-content:center;align-items:center;padding:8px 0}
@@ -78,17 +78,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 
 .ex-tip{background:rgba(55,138,221,0.07);border:1px solid rgba(55,138,221,0.15);border-radius:7px;padding:7px 10px;margin:0 0 8px;font-size:10px;color:#85b7eb;line-height:1.6}
 
-.ex-ref{background:rgba(192,111,212,.07);border:1px solid rgba(192,111,212,.15);border-radius:7px;padding:7px 10px;margin-bottom:9px}
-.ex-ref-title{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#c87de0;margin-bottom:4px}
+.ex-ref{background:rgba(56,138,221,.07);border:1px solid rgba(56,138,221,.15);border-radius:7px;padding:7px 10px;margin-bottom:9px}
+.ex-ref-title{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#7abaf7;margin-bottom:4px}
 .ex-ref-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(60px,1fr));gap:5px}
 .ex-ref-serie{background:rgba(0,0,0,.2);border-radius:5px;padding:4px 7px;text-align:center}
 .ex-ref-s{font-size:9px;color:var(--t3)}
 .ex-ref-v{font-size:12px;font-weight:600;color:var(--t);font-family:'DM Mono',monospace;margin-top:1px}
 .ex-ref-flag{font-size:9px;color:#fac775;margin-top:1px}
 
-.series-hdr{display:grid;grid-template-columns:22px 1fr 1fr 80px;gap:6px;padding:4px 0;align-items:center}
+.series-hdr{display:grid;grid-template-columns:22px 1fr 1fr;gap:6px;padding:4px 0;align-items:center}
 .series-hdr span{font-size:9px;color:var(--t3);text-align:center;text-transform:uppercase;letter-spacing:.4px}
-.serie-row{display:grid;grid-template-columns:22px 1fr 1fr 80px;gap:6px;align-items:center;margin-bottom:6px}
+.serie-row{display:grid;grid-template-columns:22px 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px}
 .serie-n{font-size:11px;color:var(--t3);text-align:center;font-family:'DM Mono',monospace}
 .serie-in{background:var(--card2);border:1px solid var(--bdr);border-radius:6px;padding:7px 4px;font-size:13px;color:var(--t);text-align:center;font-family:'DM Mono',monospace;width:100%;outline:none;-webkit-appearance:none}
 .serie-in:focus{border-color:var(--g)}
@@ -123,7 +123,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 .gym-hist-body{padding:8px 13px 12px;border-top:1px solid var(--bdr);display:none;font-size:10px;color:var(--t2);font-family:'DM Mono',monospace;line-height:1.9}
 .gym-hist-card.open .gym-hist-body{display:block}
 
-.cg{color:#c87de0}.ca{color:#fac775}.cr{color:#f09595}
+.cg{color:#7abaf7}.ca{color:#fac775}.cr{color:#f09595}
 
 .subtab{flex:1;padding:8px 4px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--radsm);font-size:10px;font-weight:700;color:var(--t3);cursor:pointer;text-align:center;transition:all .15s;letter-spacing:.4px;text-transform:uppercase}
 .subtab.on{background:var(--gl);border-color:var(--g);color:var(--g)}
@@ -132,6 +132,41 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;padding:9px 20px;border-radius:99px;font-size:13px;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;z-index:300}
 .toast.on{opacity:1}
+
+.badge-opt{background:rgba(122,150,186,.15);border:1px solid rgba(122,150,186,.3);color:#8fb4e0;font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;letter-spacing:.3px}
+.puja-btn.big{margin-top:8px}
+.save-help{font-size:10px;color:var(--t3);line-height:1.6;margin:8px 2px 0;text-align:center}
+
+/* DIETA */
+.diet-day{display:flex;gap:5px;margin-bottom:14px}
+.diet-daybtn{flex:1;min-width:0;padding:9px 2px;background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--radsm);font-size:11px;font-weight:700;color:var(--t3);cursor:pointer;text-align:center;transition:all .15s;letter-spacing:.3px}
+.diet-daybtn.on{background:var(--gl);border-color:var(--g);color:var(--g)}
+.diet-daybtn.today{box-shadow:inset 0 -3px 0 var(--a)}
+.meal{background:var(--bg3);border-radius:var(--radsm);border:1px solid var(--bdr);border-left:4px solid var(--g);padding:12px 13px;margin-bottom:8px;display:flex;gap:11px;align-items:flex-start}
+.meal.amber{border-left-color:var(--a)}
+.meal.teal{border-left-color:#378add}
+.meal.violet{border-left-color:#e0794f}
+.meal.free{border-left-color:var(--t3);opacity:.7}
+.meal-body{flex:1;min-width:0}
+.meal-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--t2);margin-bottom:4px}
+.meal-x{font-size:13px;color:var(--t);line-height:1.5}
+.meal-note{font-size:10px;color:var(--t3);font-style:italic;margin-top:5px;line-height:1.5}
+.meal-check{width:27px;height:27px;border-radius:7px;border:1px solid var(--bdr2);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:all .2s;color:var(--g)}
+.meal-check.done{background:var(--gl);border-color:var(--g)}
+.diet-note{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--radsm);padding:12px 13px;font-size:11px;color:var(--t2);line-height:1.7}
+.diet-note b{color:var(--t)}
+
+/* RESUM */
+.wk{background:var(--bg3);border:1px solid var(--bdr);border-radius:var(--radsm);padding:11px 13px;margin-bottom:8px}
+.wk-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.wk-range{font-size:13px;font-weight:600;color:var(--t)}
+.wk-cur{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--g);background:var(--gl);padding:3px 8px;border-radius:99px}
+.wk-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.wk-m{text-align:center;background:rgba(0,0,0,.18);border-radius:7px;padding:8px 4px}
+.wk-m-v{font-size:15px;font-weight:600;font-family:'DM Mono',monospace;color:var(--t)}
+.wk-m-l{font-size:9px;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.3px}
+.wk-sub{font-size:10px;color:var(--t3);margin-top:7px;font-family:'DM Mono',monospace}
+.chart-legend{font-size:10px;text-align:center;margin:-2px 0 10px}
 </style>
 </head>
 <body>
@@ -149,6 +184,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 <div class="tabs">
   <div class="tab on" onclick="goMainTab(0)">💪 GYM</div>
   <div class="tab"    onclick="goMainTab(1)">⚖️ PES</div>
+  <div class="tab"    onclick="goMainTab(2)">🥗 DIETA</div>
+  <div class="tab"    onclick="goMainTab(3)">📊 RESUM</div>
 </div>
 
 <div class="pages">
@@ -166,11 +203,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
   <div class="gympage on" id="gympage-TORSO">
     <div class="sess-hdr">
       <div><div class="sess-label">Pit, Esquena & Espatlla</div><div class="sess-sub" id="torso-last-date">Sense sessions anteriors</div></div>
-      <input type="date" class="fi" id="torso-date" style="width:auto;font-size:12px;padding:6px 9px">
+      <input type="date" class="fi" id="torso-date" style="width:auto;font-size:12px;padding:6px 9px" onchange="autosave('TORSO')">
     </div>
     <div id="torso-exercises"></div>
-    <button class="btn" onclick="saveSession('TORSO')">💾 Desar sessió</button>
-    <button class="btn btn-sec" onclick="clearForm('TORSO')">↺ Buidar</button>
+    <button class="btn" onclick="saveSession('TORSO')">💾 Desar / actualitzar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('TORSO')">↺ Buidar (nova sessió)</button>
+    <div class="save-help">El que escrius es desa sol mentre entrenes. «Desar» la registra a l'historial i la pots seguir editant.</div>
     <div class="st">Historial TORSO</div>
     <div id="torso-hist"></div>
   </div>
@@ -179,11 +217,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
   <div class="gympage" id="gympage-CAMES_A">
     <div class="sess-hdr">
       <div><div class="sess-label">Cames A · Quàdriceps & Gluti</div><div class="sess-sub" id="cames_a-last-date">Sense sessions anteriors</div></div>
-      <input type="date" class="fi" id="cames_a-date" style="width:auto;font-size:12px;padding:6px 9px">
+      <input type="date" class="fi" id="cames_a-date" style="width:auto;font-size:12px;padding:6px 9px" onchange="autosave('CAMES_A')">
     </div>
     <div id="cames_a-exercises"></div>
-    <button class="btn" onclick="saveSession('CAMES_A')">💾 Desar sessió</button>
-    <button class="btn btn-sec" onclick="clearForm('CAMES_A')">↺ Buidar</button>
+    <button class="btn" onclick="saveSession('CAMES_A')">💾 Desar / actualitzar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('CAMES_A')">↺ Buidar (nova sessió)</button>
+    <div class="save-help">El que escrius es desa sol mentre entrenes. «Desar» la registra a l'historial i la pots seguir editant.</div>
     <div class="st">Historial CAMES A</div>
     <div id="cames_a-hist"></div>
   </div>
@@ -192,11 +231,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
   <div class="gympage" id="gympage-CAMES_B">
     <div class="sess-hdr">
       <div><div class="sess-label">Cames B · Isquios, Gluti & Core</div><div class="sess-sub" id="cames_b-last-date">Sense sessions anteriors</div></div>
-      <input type="date" class="fi" id="cames_b-date" style="width:auto;font-size:12px;padding:6px 9px">
+      <input type="date" class="fi" id="cames_b-date" style="width:auto;font-size:12px;padding:6px 9px" onchange="autosave('CAMES_B')">
     </div>
     <div id="cames_b-exercises"></div>
-    <button class="btn" onclick="saveSession('CAMES_B')">💾 Desar sessió</button>
-    <button class="btn btn-sec" onclick="clearForm('CAMES_B')">↺ Buidar</button>
+    <button class="btn" onclick="saveSession('CAMES_B')">💾 Desar / actualitzar sessió</button>
+    <button class="btn btn-sec" onclick="clearForm('CAMES_B')">↺ Buidar (nova sessió)</button>
+    <div class="save-help">El que escrius es desa sol mentre entrenes. «Desar» la registra a l'historial i la pots seguir editant.</div>
     <div class="st">Historial CAMES B</div>
     <div id="cames_b-hist"></div>
   </div>
@@ -244,6 +284,46 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
   <div style="background:var(--card);border-radius:var(--rad);border:1px solid var(--bdr);padding:0 15px" id="pes-hist"></div>
 </div>
 
+<!-- TAB 2: DIETA -->
+<div class="page" id="tab-2">
+  <div class="diet-day" id="diet-day-sel"></div>
+  <div class="sgrid">
+    <div class="sc"><div class="sc-n" id="diet-today-n">0/5</div><div class="sc-l">Àpats fets avui</div></div>
+    <div class="sc"><div class="sc-n cg" id="diet-week-n">0%</div><div class="sc-l">Compliment setmana</div></div>
+  </div>
+  <div id="diet-meals"></div>
+  <div class="st">Referència</div>
+  <div class="diet-note">
+    Pesos de cereals, pasta i llegums <b>en cuit</b> (excepte la proteïna, en cru). Objectiu <b>~2.100–2.400 kcal/dia</b> · proteïna <b>~160–180 g</b> · oli <b>1,5 cull.</b> per dinar i sopar. Base orientativa; ajustos fins, amb la dietista.
+  </div>
+</div>
+
+<!-- TAB 3: RESUM -->
+<div class="page" id="tab-3">
+  <div class="sgrid3">
+    <div class="sc"><div class="sc-n" id="r-sess">0</div><div class="sc-l">Sessions aquesta setmana</div></div>
+    <div class="sc"><div class="sc-n" id="r-pes">—</div><div class="sc-l">Pes actual (kg)</div></div>
+    <div class="sc"><div class="sc-n cg" id="r-dieta">0%</div><div class="sc-l">Dieta setmana</div></div>
+  </div>
+  <div class="sgrid">
+    <div class="sc"><div class="sc-n" id="r-total">0</div><div class="sc-l">Sessions totals</div></div>
+    <div class="sc"><div class="sc-n cg" id="r-perdut">—</div><div class="sc-l">Des de la 1a pesada</div></div>
+  </div>
+  <div class="st">Sessions i pes · últimes setmanes</div>
+  <div class="chart-wrap" style="height:150px"><canvas id="chart-resum"></canvas></div>
+  <div class="chart-legend"><span class="cg">■ Sessions</span> &nbsp;&nbsp; <span class="ca">■ Pes</span></div>
+  <div class="st">Resum setmanal</div>
+  <div id="resum-list"></div>
+
+  <div class="st">Còpia de seguretat i dades</div>
+  <button class="btn btn-sec" onclick="downloadBackup()">⬇️ Exportar / descarregar còpia</button>
+  <button class="btn btn-sec" onclick="copyBackup()">📋 Copiar dades (per enviar-les)</button>
+  <button class="btn btn-sec" onclick="document.getElementById('import-file').click()">⬆️ Importar còpia</button>
+  <input type="file" id="import-file" accept="application/json,.json" style="display:none" onchange="importData(event)">
+  <button class="btn btn-sec" style="color:#f09595;border-color:rgba(226,75,74,.4);margin-top:16px" onclick="resetAllData()">🗑 Esborrar totes les dades (gym, pes i dieta)</button>
+  <div class="save-help">Exporta una còpia abans de netejar el mòbil, i importa-la després per recuperar-ho tot. Per analitzar-les, descarrega o copia i passa-les.</div>
+</div>
+
 </div><!-- /pages -->
 
 <div class="toast" id="toast"></div>
@@ -256,9 +336,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t);max-wi
 const S={
   get(k){try{const v=localStorage.getItem('txell_'+k);return v?JSON.parse(v):null;}catch{return null;}},
   set(k,v){try{localStorage.setItem('txell_'+k,JSON.stringify(v));}catch{}},
+  del(k){try{localStorage.removeItem('txell_'+k);}catch{}},
   arr(k){return this.get(k)||[]},
   push(k,v){const a=this.arr(k);a.push(v);this.set(k,a);}
 };
+let ready=false;
 
 // ═══════════════════════════════════════════
 // SVG IL·LUSTRACIONS — clares, grans, etiquetades
@@ -266,580 +348,632 @@ const S={
 const SVG = {
 
   premsa_pit: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="pp1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="196" y="50" width="16" height="112" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="178" y="78" width="20" height="65" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <line x1="178" y1="100" x2="152" y2="100" stroke="#7a4a90" stroke-width="3"/>
-  <circle cx="152" cy="100" r="5" fill="#C06FD4" opacity=".7"/>
-  <rect x="110" y="126" width="70" height="14" rx="5" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="128" y="140" width="34" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
-  <circle cx="148" cy="78" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="148" y1="92" x2="148" y2="128" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="148" y1="126" x2="112" y2="126" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="112" y1="126" x2="112" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="100" y1="167" x2="124" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
-  <line x1="148" y1="105" x2="152" y2="100" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="148" y1="105" x2="172" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
-  <line x1="164" y1="101" x2="154" y2="100" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pp1)"/>
-  <ellipse cx="148" cy="105" rx="10" ry="12" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PRESS PIT - Maquina</text>
-  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - estas asseguda i empenys cap endavant</text>
+  <defs><marker id="pp1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="196" y="50" width="16" height="112" rx="5" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="178" y="78" width="20" height="65" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <line x1="178" y1="100" x2="152" y2="100" stroke="#3f5a80" stroke-width="3"/>
+  <circle cx="152" cy="100" r="5" fill="#378add" opacity=".7"/>
+  <rect x="110" y="126" width="70" height="14" rx="5" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="128" y="140" width="34" height="28" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
+  <circle cx="148" cy="78" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="148" y1="92" x2="148" y2="128" stroke="#378add" stroke-width="3"/>
+  <line x1="148" y1="126" x2="112" y2="126" stroke="#378add" stroke-width="3"/>
+  <line x1="112" y1="126" x2="112" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="100" y1="167" x2="124" y2="167" stroke="#378add" stroke-width="3.5"/>
+  <line x1="148" y1="105" x2="152" y2="100" stroke="#378add" stroke-width="3"/>
+  <line x1="148" y1="105" x2="172" y2="102" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <line x1="150" y1="100" x2="120" y2="100" stroke="#EF9F27" stroke-width="2" marker-end="url(#pp1)"/>
+  <ellipse cx="148" cy="105" rx="10" ry="12" fill="#378add" opacity=".18" stroke="#378add" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">PRESS PIT - Maquina</text>
+  <text x="140" y="35" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - estas asseguda i empenys cap endavant</text>
   <text x="80" y="100" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">empeny</text>
-  <text x="148" y="175" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Esquena recolzada - Colzes lleugerament per sota de les espatlles</text>
+  <text x="148" y="175" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Esquena recolzada - Colzes lleugerament per sota de les espatlles</text>
 </svg>`,
 
   obertura_pit: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="op1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
-    <marker id="op2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+    <marker id="op1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
+    <marker id="op2" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
   </defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- MAQUINA: columnes esquerra i dreta -->
-  <rect x="10" y="45" width="12" height="118" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="258" y="45" width="12" height="118" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="10" y="45" width="12" height="118" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="258" y="45" width="12" height="118" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
   <!-- COIXINETS (on posen els colzes) - ben visibles -->
-  <rect x="20" y="88" width="34" height="30" rx="7" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <rect x="20" y="88" width="34" height="30" rx="7" fill="#3f5a80" opacity=".55" stroke="#378add" stroke-width="2"/>
   <text x="37" y="107" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="600">colze</text>
-  <rect x="226" y="88" width="34" height="30" rx="7" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <rect x="226" y="88" width="34" height="30" rx="7" fill="#3f5a80" opacity=".55" stroke="#378add" stroke-width="2"/>
   <text x="243" y="107" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="600">colze</text>
   <!-- seient -->
-  <rect x="112" y="130" width="56" height="12" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <rect x="126" y="142" width="28" height="26" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="112" y="130" width="56" height="12" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <rect x="126" y="142" width="28" height="26" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
   <!-- PERSONA vista frontal -->
-  <circle cx="140" cy="70" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="84" x2="140" y2="130" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="140" y1="128" x2="118" y2="166" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="128" x2="162" y2="166" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="140" cy="70" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="84" x2="140" y2="130" stroke="#378add" stroke-width="3"/>
+  <line x1="140" y1="128" x2="118" y2="166" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="128" x2="162" y2="166" stroke="#378add" stroke-width="2.5"/>
   <!-- BRACOS: posicio OBERTA (inicial) - puntejat -->
-  <line x1="140" y1="98" x2="54" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
-  <line x1="140" y1="98" x2="226" y2="102" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
+  <line x1="140" y1="98" x2="54" y2="102" stroke="#378add" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
+  <line x1="140" y1="98" x2="226" y2="102" stroke="#378add" stroke-width="2" stroke-dasharray="6,4" opacity=".5"/>
   <!-- BRACOS: posicio TANCADA (final) - solida i gruixuda -->
-  <line x1="140" y1="98" x2="86" y2="100" stroke="#C06FD4" stroke-width="3.5"/>
-  <line x1="140" y1="98" x2="194" y2="100" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="140" y1="98" x2="86" y2="100" stroke="#378add" stroke-width="3.5"/>
+  <line x1="140" y1="98" x2="194" y2="100" stroke="#378add" stroke-width="3.5"/>
   <!-- PIT destacat -->
-  <ellipse cx="140" cy="98" rx="22" ry="18" fill="#C06FD4" opacity=".2" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="140" y="101" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PIT</text>
+  <ellipse cx="140" cy="98" rx="22" ry="18" fill="#378add" opacity=".2" stroke="#378add" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="140" y="101" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">PIT</text>
   <!-- FLETXES ARC molt visibles: de posicio oberta cap a tancada -->
-  <path d="M 54 100 Q 68 82 86 100" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#op1)"/>
-  <path d="M 226 100 Q 212 82 194 100" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#op2)"/>
+  <path d="M 54 100 Q 68 82 86 100" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#op1)"/>
+  <path d="M 226 100 Q 212 82 194 100" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#op2)"/>
   <!-- labels obertura -->
-  <text x="44" y="78" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">OBERT</text>
-  <text x="44" y="88" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">(inici)</text>
-  <text x="236" y="78" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">OBERT</text>
-  <text x="236" y="88" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">(inici)</text>
+  <text x="44" y="78" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">OBERT</text>
+  <text x="44" y="88" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">(inici)</text>
+  <text x="236" y="78" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">OBERT</text>
+  <text x="236" y="88" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">(inici)</text>
   <text x="140" y="80" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">TANCAT (final)</text>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">OBERTURA PIT - Pec Deck</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Colzes a 90° als coixinets - Tanca seguint arc - Para 1 seg al centre</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">OBERTURA PIT - Pec Deck</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Colzes a 90° als coixinets - Tanca seguint arc - Para 1 seg al centre</text>
 </svg>`,
 
   lat_pulldown: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="lp1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <rect x="120" y="12" width="40" height="8" rx="3" fill="#261636" stroke="#7a4a90" stroke-width="1.5"/>
-  <line x1="140" y1="8" x2="140" y2="16" stroke="#7a4a90" stroke-width="3"/>
-  <rect x="44" y="16" width="192" height="8" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <circle cx="52" cy="20" r="6" fill="#7a4a90" opacity=".7"/>
-  <circle cx="228" cy="20" r="6" fill="#7a4a90" opacity=".7"/>
-  <line x1="52" y1="26" x2="96" y2="72" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
-  <line x1="228" y1="26" x2="184" y2="72" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
-  <rect x="110" y="132" width="60" height="10" rx="4" fill="#7a4a90" opacity=".5" stroke="#C06FD4" stroke-width="1"/>
-  <rect x="108" y="140" width="64" height="10" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <circle cx="140" cy="74" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="88" x2="143" y2="132" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="143" y1="132" x2="112" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="143" y1="132" x2="172" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="88" x2="96" y2="72" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="140" y1="88" x2="184" y2="72" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="140" y1="24" x2="140" y2="80" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#lp1)"/>
-  <ellipse cx="143" cy="108" rx="12" ry="18" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="140" y="170" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">LAT PULLDOWN - Politja Alta</text>
-  <text x="140" y="158" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Tira la barra fins al pit - Colzes van cap avall i als costats</text>
-  <text x="52" y="55" font-size="8" fill="#a87ab8" font-family="sans-serif">mans</text>
-  <text x="204" y="55" font-size="8" fill="#a87ab8" font-family="sans-serif">amples</text>
+  <defs><marker id="lp1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <rect x="120" y="12" width="40" height="8" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <line x1="140" y1="8" x2="140" y2="16" stroke="#3f5a80" stroke-width="3"/>
+  <rect x="44" y="16" width="192" height="8" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <circle cx="52" cy="20" r="6" fill="#3f5a80" opacity=".7"/>
+  <circle cx="228" cy="20" r="6" fill="#3f5a80" opacity=".7"/>
+  <line x1="52" y1="26" x2="96" y2="72" stroke="#378add" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
+  <line x1="228" y1="26" x2="184" y2="72" stroke="#378add" stroke-width="1.5" stroke-dasharray="5,3" opacity=".6"/>
+  <rect x="110" y="132" width="60" height="10" rx="4" fill="#3f5a80" opacity=".5" stroke="#378add" stroke-width="1"/>
+  <rect x="108" y="140" width="64" height="10" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <circle cx="140" cy="74" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="88" x2="143" y2="132" stroke="#378add" stroke-width="3"/>
+  <line x1="143" y1="132" x2="112" y2="132" stroke="#378add" stroke-width="2.5"/>
+  <line x1="143" y1="132" x2="172" y2="132" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="88" x2="96" y2="72" stroke="#378add" stroke-width="3"/>
+  <line x1="140" y1="88" x2="184" y2="72" stroke="#378add" stroke-width="3"/>
+  <line x1="140" y1="28" x2="140" y2="92" stroke="#EF9F27" stroke-width="2" marker-end="url(#lp1)"/>
+  <ellipse cx="143" cy="108" rx="12" ry="18" fill="#378add" opacity=".18" stroke="#378add" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="170" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">LAT PULLDOWN - Politja Alta</text>
+  <text x="140" y="158" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Tira la barra fins al pit - Colzes van cap avall i als costats</text>
+  <text x="52" y="55" font-size="8" fill="#7a96ba" font-family="sans-serif">mans</text>
+  <text x="204" y="55" font-size="8" fill="#7a96ba" font-family="sans-serif">amples</text>
   <text x="162" y="108" font-size="8" fill="#EF9F27" font-family="sans-serif">esquena</text>
 </svg>`,
 
   rem_assegut: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="ra1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="14" y="50" width="16" height="110" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <circle cx="22" cy="112" r="9" fill="#1e1428" stroke="#7a4a90" stroke-width="2"/>
-  <circle cx="22" cy="112" r="4" fill="#7a4a90"/>
-  <rect x="28" y="136" width="50" height="10" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <line x1="30" y1="112" x2="92" y2="108" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,3" opacity=".6"/>
-  <line x1="92" y1="106" x2="104" y2="102" stroke="#7a4a90" stroke-width="3"/>
-  <line x1="92" y1="110" x2="104" y2="114" stroke="#7a4a90" stroke-width="3"/>
-  <rect x="100" y="132" width="100" height="12" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <circle cx="178" cy="82" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="178" y1="96" x2="176" y2="132" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="176" y1="130" x2="104" y2="132" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="104" y1="132" x2="98" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="178" y1="106" x2="104" y2="108" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="178" y1="106" x2="205" y2="100" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
-  <ellipse cx="178" cy="112" rx="10" ry="18" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
-  <line x1="94" y1="108" x2="112" y2="107" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#ra1)"/>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">REM ASSEGUT - Politja</text>
-  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - tires el cable cap al ventre</text>
+  <defs><marker id="ra1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="14" y="50" width="16" height="110" rx="5" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <circle cx="22" cy="112" r="9" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <circle cx="22" cy="112" r="4" fill="#3f5a80"/>
+  <rect x="28" y="136" width="50" height="10" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <line x1="30" y1="112" x2="92" y2="108" stroke="#378add" stroke-width="2" stroke-dasharray="5,3" opacity=".6"/>
+  <line x1="92" y1="106" x2="104" y2="102" stroke="#3f5a80" stroke-width="3"/>
+  <line x1="92" y1="110" x2="104" y2="114" stroke="#3f5a80" stroke-width="3"/>
+  <rect x="100" y="132" width="100" height="12" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <circle cx="178" cy="82" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="178" y1="96" x2="176" y2="132" stroke="#378add" stroke-width="3"/>
+  <line x1="176" y1="130" x2="104" y2="132" stroke="#378add" stroke-width="2.5"/>
+  <line x1="104" y1="132" x2="98" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <line x1="178" y1="106" x2="104" y2="108" stroke="#378add" stroke-width="3"/>
+  <line x1="178" y1="106" x2="205" y2="100" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <ellipse cx="178" cy="112" rx="10" ry="18" fill="#378add" opacity=".18" stroke="#378add" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="86" y1="108" x2="126" y2="106" stroke="#EF9F27" stroke-width="2" marker-end="url(#ra1)"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">REM ASSEGUT - Politja</text>
+  <text x="140" y="35" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - tires el cable cap al ventre</text>
   <text x="62" y="100" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">tira</text>
   <text x="195" y="80" font-size="8" fill="#EF9F27" font-family="sans-serif">esquena</text>
   <text x="195" y="90" font-size="8" fill="#EF9F27" font-family="sans-serif">RECTA!</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Colzes enrere fins juntar omoplats - No et tombis enrere</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Colzes enrere fins juntar omoplats - No et tombis enrere</text>
 </svg>`,
 
   press_militar: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="pm1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="186" y="30" width="16" height="132" rx="5" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="102" y="126" width="80" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="122" y="140" width="40" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
-  <rect x="172" y="78" width="16" height="60" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <line x1="172" y1="96" x2="150" y2="94" stroke="#7a4a90" stroke-width="3"/>
-  <circle cx="150" cy="94" r="5" fill="#C06FD4" opacity=".7"/>
-  <line x1="172" y1="70" x2="152" y2="64" stroke="#7a4a90" stroke-width="2" stroke-dasharray="4,3" opacity=".4"/>
-  <circle cx="152" cy="64" r="4" fill="#C06FD4" opacity=".35"/>
-  <circle cx="138" cy="72" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="138" y1="86" x2="138" y2="128" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="138" y1="126" x2="104" y2="126" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="138" y1="126" x2="172" y2="126" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="104" y1="126" x2="100" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="138" y1="90" x2="152" y2="64" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="138" y1="90" x2="150" y2="94" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
-  <line x1="148" y1="90" x2="148" y2="66" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pm1)"/>
-  <circle cx="138" cy="90" r="11" fill="#C06FD4" opacity=".18" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PRESS MILITAR - Maquina</text>
-  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - empenys les manetes cap amunt</text>
+  <defs><marker id="pm1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="186" y="30" width="16" height="132" rx="5" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="102" y="126" width="80" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="122" y="140" width="40" height="28" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
+  <rect x="172" y="78" width="16" height="60" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <line x1="172" y1="96" x2="150" y2="94" stroke="#3f5a80" stroke-width="3"/>
+  <circle cx="150" cy="94" r="5" fill="#378add" opacity=".7"/>
+  <line x1="172" y1="70" x2="152" y2="64" stroke="#3f5a80" stroke-width="2" stroke-dasharray="4,3" opacity=".4"/>
+  <circle cx="152" cy="64" r="4" fill="#378add" opacity=".35"/>
+  <circle cx="138" cy="72" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="138" y1="86" x2="138" y2="128" stroke="#378add" stroke-width="3"/>
+  <line x1="138" y1="126" x2="104" y2="126" stroke="#378add" stroke-width="2.5"/>
+  <line x1="138" y1="126" x2="172" y2="126" stroke="#378add" stroke-width="2.5"/>
+  <line x1="104" y1="126" x2="100" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <line x1="138" y1="90" x2="152" y2="64" stroke="#378add" stroke-width="3"/>
+  <line x1="138" y1="90" x2="150" y2="94" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+  <line x1="148" y1="96" x2="148" y2="56" stroke="#EF9F27" stroke-width="2" marker-end="url(#pm1)"/>
+  <circle cx="138" cy="90" r="11" fill="#378add" opacity=".18" stroke="#378add" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">PRESS MILITAR - Maquina</text>
+  <text x="140" y="34" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - empenys les manetes cap amunt</text>
   <text x="120" y="58" font-size="8" fill="#EF9F27" font-family="sans-serif">amunt</text>
   <text x="100" y="92" font-size="8" fill="#EF9F27" font-family="sans-serif">espatlla</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Quasi esten el brac a dalt - Torna fins colzes a alcada espatlla</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Quasi esten el brac a dalt - Torna fins colzes a alcada espatlla</text>
 </svg>`,
 
   elevacio_lateral: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="el1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <defs><marker id="el1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <!-- POLITJA al terra esquerra -->
-  <rect x="14" y="130" width="16" height="38" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <circle cx="22" cy="134" r="7" fill="#1e1428" stroke="#7a4a90" stroke-width="2"/>
-  <circle cx="22" cy="134" r="3" fill="#7a4a90"/>
-  <text x="22" y="155" font-size="7" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">politja</text>
-  <text x="22" y="163" font-size="7" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">baixa</text>
-  <!-- CABLE del terra fins la ma -->
-  <line x1="29" y1="134" x2="104" y2="96" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="5,3" opacity=".7"/>
-  <!-- PERSONA de peu - vista FRONTAL clara -->
-  <!-- cos central -->
-  <circle cx="148" cy="60" r="15" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <!-- tronc -->
-  <line x1="148" y1="75" x2="148" y2="128" stroke="#C06FD4" stroke-width="3"/>
-  <!-- cama esquerra -->
-  <line x1="148" y1="126" x2="132" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
-  <!-- cama dreta -->
-  <line x1="148" y1="126" x2="164" y2="167" stroke="#C06FD4" stroke-width="2.5"/>
-  <!-- BRAC EN REPOS (dret) - penjant avall -->
-  <line x1="148" y1="88" x2="172" y2="112" stroke="#C06FD4" stroke-width="2.5" opacity=".5"/>
-  <text x="182" y="116" font-size="7.5" fill="#a87ab8" font-family="sans-serif">repòs</text>
-  <!-- BRAC ACTIU (esquerre) POSICIO BAIXA - puntejat -->
-  <line x1="148" y1="88" x2="124" y2="114" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
-  <text x="106" y="122" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
-  <!-- BRAC ACTIU POSICIO ALTA (fins alcada espatlla) - solida -->
-  <line x1="148" y1="88" x2="104" y2="88" stroke="#C06FD4" stroke-width="4"/>
-  <!-- ma al final del brac actiu -->
-  <circle cx="104" cy="88" r="5" fill="#C06FD4" opacity=".7"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <!-- PERSONA de peu - vista FRONTAL -->
+  <circle cx="140" cy="52" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="66" x2="140" y2="122" stroke="#378add" stroke-width="3"/>
+  <line x1="140" y1="120" x2="126" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="120" x2="154" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <!-- BRAÇOS EN POSICIÓ ALTA (fins alçada espatlla) amb MANCUERNES -->
+  <line x1="140" y1="80" x2="98" y2="80" stroke="#378add" stroke-width="4"/>
+  <line x1="140" y1="80" x2="182" y2="80" stroke="#378add" stroke-width="4"/>
+  <!-- mancuernes (dumbbells) a cada mà -->
+  <g stroke="#378add" stroke-width="2" fill="#141c2c">
+    <rect x="88" y="70" width="8" height="20" rx="2"/><rect x="94" y="74" width="6" height="12" rx="2"/><line x1="97" y1="80" x2="100" y2="80"/>
+    <rect x="184" y="70" width="8" height="20" rx="2"/><rect x="180" y="74" width="6" height="12" rx="2"/><line x1="180" y1="80" x2="183" y2="80"/>
+  </g>
+  <!-- posicio baixa (inici) puntejada -->
+  <line x1="140" y1="86" x2="120" y2="116" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".35"/>
+  <line x1="140" y1="86" x2="160" y2="116" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".35"/>
+  <text x="140" y="132" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici: braços avall</text>
   <!-- DELTOIDES destacat -->
-  <ellipse cx="136" cy="84" rx="13" ry="10" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="120" y="74" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">DELTOIDES</text>
-  <!-- FLETXA arc mostrant el moviment: de baix a banda -->
-  <path d="M 124 110 Q 100 102 104 88" fill="none" stroke="#EF9F27" stroke-width="3" marker-end="url(#el1)"/>
-  <!-- linia de referencia alcada espatlla -->
-  <line x1="90" y1="88" x2="170" y2="88" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-  <text x="88" y="85" font-size="7" fill="#EF9F27" text-anchor="end" font-family="sans-serif">espatlla</text>
-  <!-- titol i instruccio -->
-  <text x="148" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">ELEVACIO LATERAL - Politja</text>
-  <text x="148" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista frontal - puges el brac fins alcada espatlla</text>
-  <text x="148" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Brac lleugerament doblegat - No passes de l'alcada de l'espatlla - Pes lleuger</text>
+  <ellipse cx="122" cy="78" rx="12" ry="9" fill="#EF9F27" opacity=".22" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <ellipse cx="158" cy="78" rx="12" ry="9" fill="#EF9F27" opacity=".22" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="140" y="100" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">DELTOIDES</text>
+  <!-- FLETXES de moviment -->
+  <path d="M 122 112 Q 100 100 100 82" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#el1)"/>
+  <path d="M 158 112 Q 180 100 180 82" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#el1)"/>
+  <!-- linia alçada espatlla -->
+  <line x1="86" y1="80" x2="194" y2="80" stroke="#EF9F27" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">ELEVACIÓ LATERAL - Mancuernes</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista frontal - puges els dos braços a la vegada</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Braç lleugerament doblegat - No passis de l'alçada de l'espatlla - Pes lleuger</text>
+</svg>`,
+
+  triceps_politja: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="tp1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <!-- torre de politja alta -->
+  <rect x="228" y="18" width="14" height="150" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <circle cx="235" cy="30" r="8" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/><circle cx="235" cy="30" r="3" fill="#3f5a80"/>
+  <text x="235" y="14" font-size="7" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">politja alta</text>
+  <!-- cable -->
+  <line x1="235" y1="38" x2="178" y2="92" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="5,3" opacity=".7"/>
+  <rect x="170" y="90" width="18" height="8" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <text x="179" y="108" font-size="7" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">barra</text>
+  <!-- persona de perfil -->
+  <circle cx="120" cy="46" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="120" y1="59" x2="120" y2="126" stroke="#378add" stroke-width="3"/>
+  <line x1="120" y1="124" x2="112" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <line x1="120" y1="124" x2="130" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <!-- braç: colze fix al costat (fix) -->
+  <line x1="120" y1="72" x2="150" y2="86" stroke="#378add" stroke-width="3"/>
+  <!-- avantbraç posició amunt (inici) puntejat -->
+  <line x1="150" y1="86" x2="158" y2="66" stroke="#378add" stroke-width="2.5" stroke-dasharray="5,4" opacity=".4"/>
+  <text x="168" y="62" font-size="7" fill="#7a96ba" font-family="sans-serif">inici (90°)</text>
+  <!-- avantbraç estès avall (final) sòlid cap a la barra -->
+  <line x1="150" y1="86" x2="172" y2="94" stroke="#378add" stroke-width="3.5"/>
+  <!-- triceps destacat -->
+  <ellipse cx="135" cy="80" rx="12" ry="7" fill="#EF9F27" opacity=".22" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="118" y="102" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">TRÍCEPS</text>
+  <path d="M 158 70 Q 168 82 172 92" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#tp1)"/>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">TRÍCEPS - Politja alta</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Colzes ENGANXATS al cos - només es mou l'avantbraç</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Estén els braços cap avall fins al final - torna a poc a poc</text>
+</svg>`,
+
+  biceps_mancuerna: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="bm1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <!-- persona de perfil dret -->
+  <circle cx="130" cy="46" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="130" y1="59" x2="130" y2="126" stroke="#378add" stroke-width="3"/>
+  <line x1="130" y1="124" x2="122" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <line x1="130" y1="124" x2="140" y2="167" stroke="#378add" stroke-width="2.5"/>
+  <!-- braç: part alta fixa al costat -->
+  <line x1="130" y1="72" x2="132" y2="108" stroke="#378add" stroke-width="3"/>
+  <!-- avantbraç avall (inici) puntejat amb mancuerna -->
+  <line x1="132" y1="108" x2="158" y2="118" stroke="#378add" stroke-width="2.5" stroke-dasharray="5,4" opacity=".4"/>
+  <g stroke="#378add" stroke-width="2" fill="#141c2c" opacity=".5">
+    <rect x="158" y="110" width="7" height="16" rx="2"/><rect x="163" y="113" width="5" height="10" rx="2"/>
+  </g>
+  <text x="176" y="120" font-size="7" fill="#7a96ba" font-family="sans-serif">inici</text>
+  <!-- avantbraç amunt (final) sòlid amb mancuerna -->
+  <line x1="132" y1="108" x2="150" y2="78" stroke="#378add" stroke-width="3.5"/>
+  <g stroke="#378add" stroke-width="2" fill="#141c2c">
+    <rect x="145" y="68" width="7" height="18" rx="2"/><rect x="150" y="72" width="5" height="10" rx="2"/>
+  </g>
+  <!-- biceps destacat -->
+  <ellipse cx="128" cy="90" rx="9" ry="12" fill="#EF9F27" opacity=".22" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="104" y="94" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">BÍCEPS</text>
+  <path d="M 158 112 Q 150 92 150 80" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#bm1)"/>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">BÍCEPS - Mancuernes</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Colze fix al costat - puja fent força amb el bíceps</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">No balancegis el cos - baixa controlant en 2-3 seg</text>
 </svg>`,
 
   sentadilla_multipower: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="sm1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="66" y="12" width="12" height="155" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="202" y="12" width="12" height="155" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="62" y="72" width="156" height="9" rx="4" fill="#7a4a90" stroke="#C06FD4" stroke-width="1.5"/>
-  <circle cx="140" cy="52" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="65" x2="136" y2="95" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="136" y1="78" x2="82" y2="78" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="78" x2="198" y2="78" stroke="#C06FD4" stroke-width="2.5"/>
-  <circle cx="136" cy="108" r="6" fill="#C06FD4" opacity=".5"/>
-  <line x1="136" y1="108" x2="108" y2="132" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="136" y1="108" x2="162" y2="132" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="108" y1="132" x2="100" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="162" y1="132" x2="170" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="90" y1="167" x2="112" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
-  <line x1="158" y1="167" x2="182" y2="167" stroke="#C06FD4" stroke-width="3.5"/>
-  <line x1="140" y1="108" x2="140" y2="70" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#sm1)"/>
+  <defs><marker id="sm1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="66" y="12" width="12" height="155" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="202" y="12" width="12" height="155" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="62" y="72" width="156" height="9" rx="4" fill="#3f5a80" stroke="#378add" stroke-width="1.5"/>
+  <circle cx="140" cy="52" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="65" x2="136" y2="95" stroke="#378add" stroke-width="3"/>
+  <line x1="136" y1="78" x2="82" y2="78" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="78" x2="198" y2="78" stroke="#378add" stroke-width="2.5"/>
+  <circle cx="136" cy="108" r="6" fill="#378add" opacity=".5"/>
+  <line x1="136" y1="108" x2="108" y2="132" stroke="#378add" stroke-width="3"/>
+  <line x1="136" y1="108" x2="162" y2="132" stroke="#378add" stroke-width="3"/>
+  <line x1="108" y1="132" x2="100" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="162" y1="132" x2="170" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="90" y1="167" x2="112" y2="167" stroke="#378add" stroke-width="3.5"/>
+  <line x1="158" y1="167" x2="182" y2="167" stroke="#378add" stroke-width="3.5"/>
+  <line x1="140" y1="112" x2="140" y2="60" stroke="#EF9F27" stroke-width="2" marker-end="url(#sm1)"/>
   <circle cx="110" cy="132" r="6" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5"/>
   <circle cx="160" cy="132" r="6" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="1.5"/>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">SENTADILLA - Multipower</text>
-  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Posicio baixa - genolls seguint la direccio dels peus</text>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">SENTADILLA - Multipower</text>
+  <text x="140" y="34" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Posicio baixa - genolls seguint la direccio dels peus</text>
   <text x="50" y="108" font-size="8" fill="#EF9F27" text-anchor="end" font-family="sans-serif">malucs</text>
   <text x="188" y="132" font-size="8" fill="#EF9F27" font-family="sans-serif">genolls</text>
   <text x="188" y="142" font-size="8" fill="#EF9F27" font-family="sans-serif">cap als</text>
   <text x="188" y="152" font-size="8" fill="#EF9F27" font-family="sans-serif">peus!</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Pit amunt - Profunditat minima: cuixes paral.leles al terra</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Pit amunt - Profunditat minima: cuixes paral.leles al terra</text>
 </svg>`,
 
   hip_thrust: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="ht1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="130" y="96" width="120" height="18" rx="5" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="145" y="114" width="20" height="54" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
-  <rect x="210" y="114" width="20" height="54" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
-  <circle cx="204" cy="80" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="196" y1="88" x2="134" y2="100" stroke="#C06FD4" stroke-width="3"/>
+  <defs><marker id="ht1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="130" y="96" width="120" height="18" rx="5" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="145" y="114" width="20" height="54" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
+  <rect x="210" y="114" width="20" height="54" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
+  <circle cx="204" cy="80" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="196" y1="88" x2="134" y2="100" stroke="#378add" stroke-width="3"/>
   <circle cx="118" cy="104" r="7" fill="#EF9F27" opacity=".4" stroke="#EF9F27" stroke-width="1.5"/>
-  <line x1="118" y1="104" x2="96" y2="134" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="96" y1="134" x2="88" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="70" y1="167" x2="106" y2="167" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="118" y1="104" x2="96" y2="134" stroke="#378add" stroke-width="3"/>
+  <line x1="96" y1="134" x2="88" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="70" y1="167" x2="106" y2="167" stroke="#378add" stroke-width="4"/>
   <line x1="88" y1="110" x2="200" y2="88" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="6,4" opacity=".7"/>
-  <line x1="118" y1="128" x2="118" y2="106" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#ht1)"/>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">HIP THRUST - Gluti</text>
-  <text x="140" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Esquena recolzada al banc - Malucs amunt</text>
+  <line x1="118" y1="132" x2="118" y2="98" stroke="#EF9F27" stroke-width="2" marker-end="url(#ht1)"/>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">HIP THRUST - Gluti</text>
+  <text x="140" y="34" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Esquena recolzada al banc - Malucs amunt</text>
   <text x="100" y="96" font-size="8" fill="#EF9F27" font-family="sans-serif">maluc amunt</text>
   <text x="172" y="82" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">cos recte!</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Apreta el gluti fort 1 seg a dalt - Genolls 90 graus - No arquear la lumbar</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Apreta el gluti fort 1 seg a dalt - Genolls 90 graus - No arquear la lumbar</text>
 </svg>`,
 
   extensio_quad: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="eq1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <defs><marker id="eq1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- MAQUINA: estructura -->
-  <rect x="182" y="50" width="14" height="112" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="162" y="62" width="22" height="65" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <rect x="182" y="50" width="14" height="112" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="162" y="62" width="22" height="65" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
   <!-- SEIENT horitzontal -->
-  <rect x="82" y="108" width="82" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
+  <rect x="82" y="108" width="82" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
   <!-- respatller vertical -->
-  <rect x="156" y="70" width="10" height="50" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <rect x="156" y="70" width="10" height="50" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
   <!-- RODET INFERIOR (on va el peu/turmell) -->
-  <rect x="56" y="128" width="22" height="12" rx="5" fill="#7a4a90" opacity=".7" stroke="#C06FD4" stroke-width="2"/>
-  <text x="67" y="149" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">rodet</text>
-  <text x="67" y="158" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">turmell</text>
+  <rect x="56" y="128" width="22" height="12" rx="5" fill="#3f5a80" opacity=".7" stroke="#378add" stroke-width="2"/>
+  <text x="67" y="149" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="600">rodet</text>
+  <text x="67" y="158" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="600">turmell</text>
   <!-- PERSONA asseguda, vista lateral -->
   <!-- cap -->
-  <circle cx="132" cy="64" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="132" cy="64" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
   <!-- tronc vertical -->
-  <line x1="132" y1="78" x2="132" y2="110" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="132" y1="78" x2="132" y2="110" stroke="#378add" stroke-width="3"/>
   <!-- mans agafant manetes laterals -->
-  <line x1="132" y1="88" x2="158" y2="90" stroke="#C06FD4" stroke-width="2" opacity=".6"/>
+  <line x1="132" y1="88" x2="158" y2="90" stroke="#378add" stroke-width="2" opacity=".6"/>
   <!-- CUIXA horitzontal (fixa) -->
-  <line x1="132" y1="110" x2="82" y2="112" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="132" y1="110" x2="82" y2="112" stroke="#378add" stroke-width="3.5"/>
   <!-- CAMA BAIXA DOBLEGADA (posicio inicial - puntejat) -->
-  <line x1="82" y1="112" x2="74" y2="150" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
-  <text x="62" y="166" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <line x1="82" y1="112" x2="74" y2="150" stroke="#378add" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
+  <text x="62" y="166" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
   <!-- CAMA ESTESA (posicio final - solida i gruixuda) -->
-  <line x1="82" y1="112" x2="56" y2="134" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="82" y1="112" x2="56" y2="134" stroke="#378add" stroke-width="4"/>
   <!-- PEU -->
-  <line x1="56" y1="134" x2="42" y2="142" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="56" y1="134" x2="42" y2="142" stroke="#378add" stroke-width="3"/>
   <!-- QUADRICEPS destacat (davant de la cuixa) -->
   <rect x="56" y="108" width="28" height="10" rx="4" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <text x="70" y="99" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">QUAD</text>
   <line x1="70" y1="101" x2="70" y2="107" stroke="#EF9F27" stroke-width="1.5"/>
   <!-- FLETXA gran: de doblegat a estes -->
-  <path d="M 74 145 Q 52 138 56 128" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#eq1)"/>
+  <path d="M 74 145 Q 52 138 56 128" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#eq1)"/>
   <!-- fletxa baixada lenta -->
   <text x="30" y="130" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="600">BAIXA</text>
   <text x="30" y="140" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="600">LENT!</text>
   <text x="30" y="150" font-size="7" fill="#f09595" text-anchor="middle" font-family="sans-serif">3 seg</text>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">EXTENSIO QUADRICEPS</text>
-  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - estes la cama i torna molt a poc a poc</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Para 1 seg a dalt apretant el quad - Baixada de 3 segons - Es on mes es treballa</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">EXTENSIO QUADRICEPS</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - estes la cama i torna molt a poc a poc</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Para 1 seg a dalt apretant el quad - Baixada de 3 segons - Es on mes es treballa</text>
 </svg>`,
 
   abductor: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="ab1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
-    <marker id="ab2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+    <marker id="ab1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
+    <marker id="ab2" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
   </defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- seient i suport -->
-  <rect x="102" y="108" width="76" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="120" y="122" width="40" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="102" y="108" width="76" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="120" y="122" width="40" height="46" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
   <!-- COIXINETS - molt visibles, etiquetats clarament -->
   <!-- coixinet esquerre (per FORA del genoll) -->
-  <rect x="32" y="112" width="26" height="22" rx="7" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="2.5"/>
-  <text x="45" y="108" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <rect x="32" y="112" width="26" height="22" rx="7" fill="#378add" opacity=".5" stroke="#378add" stroke-width="2.5"/>
+  <text x="45" y="108" font-size="8" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
   <text x="45" y="118" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">FORA</text>
   <!-- coixinet dret -->
-  <rect x="222" y="112" width="26" height="22" rx="7" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="2.5"/>
-  <text x="235" y="108" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <rect x="222" y="112" width="26" height="22" rx="7" fill="#378add" opacity=".5" stroke="#378add" stroke-width="2.5"/>
+  <text x="235" y="108" font-size="8" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
   <text x="235" y="118" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">FORA</text>
   <!-- PERSONA (vista frontal) -->
-  <circle cx="140" cy="58" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="72" x2="140" y2="108" stroke="#C06FD4" stroke-width="3"/>
+  <circle cx="140" cy="58" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="72" x2="140" y2="108" stroke="#378add" stroke-width="3"/>
   <!-- CUIXES TANCADES (inici - puntejat) -->
-  <line x1="140" y1="108" x2="100" y2="122" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
-  <line x1="140" y1="108" x2="180" y2="122" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <line x1="140" y1="108" x2="100" y2="122" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <line x1="140" y1="108" x2="180" y2="122" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
   <!-- CUIXES OBERTES (final - solida) -->
-  <line x1="140" y1="108" x2="58" y2="122" stroke="#C06FD4" stroke-width="4"/>
-  <line x1="140" y1="108" x2="222" y2="122" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="140" y1="108" x2="58" y2="122" stroke="#378add" stroke-width="4"/>
+  <line x1="140" y1="108" x2="222" y2="122" stroke="#378add" stroke-width="4"/>
   <!-- GENOLLS destacats -->
   <circle cx="60" cy="122" r="7" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <circle cx="220" cy="122" r="7" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <!-- CAMES (tibies) baixant -->
-  <line x1="60" y1="129" x2="52" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="220" y1="129" x2="228" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="60" y1="129" x2="52" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="220" y1="129" x2="228" y2="167" stroke="#378add" stroke-width="3"/>
   <!-- FLETXES D'OBERTURA - grans i clares -->
-  <line x1="100" y1="118" x2="62" y2="122" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ab1)"/>
-  <line x1="180" y1="118" x2="218" y2="122" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ab2)"/>
+  <line x1="100" y1="118" x2="62" y2="122" stroke="#EF9F27" stroke-width="2" marker-end="url(#ab1)"/>
+  <line x1="180" y1="118" x2="218" y2="122" stroke="#EF9F27" stroke-width="2" marker-end="url(#ab2)"/>
   <!-- text moviment -->
   <text x="44" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">OBRE</text>
   <text x="236" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">OBRE</text>
   <!-- GLUTI MIG destacat -->
-  <text x="140" y="97" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">gluti mig</text>
+  <text x="140" y="97" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif">gluti mig</text>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">MAQUINA ABDUCTOR (OBRIR)</text>
-  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Coixinets PER FORA dels genolls - Obres les cames cap als costats</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Torna lentament cap al centre - No deixis que el pes tanqui sol</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">MAQUINA ABDUCTOR (OBRIR)</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Coixinets PER FORA dels genolls - Obres les cames cap als costats</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Torna lentament cap al centre - No deixis que el pes tanqui sol</text>
 </svg>`,
 
   bessons_assegut: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="ba1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
-    <marker id="ba2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+    <marker id="ba1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
+    <marker id="ba2" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
   </defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- RESSALT per als peus (escalo) -->
-  <rect x="70" y="152" width="120" height="16" rx="3" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <text x="130" y="164" font-size="7.5" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">ressalt</text>
+  <rect x="70" y="152" width="120" height="16" rx="3" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <text x="130" y="164" font-size="7.5" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">ressalt</text>
   <!-- SEIENT -->
-  <rect x="70" y="110" width="120" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="106" y="124" width="48" height="28" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="70" y="110" width="120" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="106" y="124" width="48" height="28" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
   <!-- COIXINET SOBRE ELS GENOLLS -->
-  <rect x="72" y="98" width="116" height="14" rx="5" fill="#7a4a90" opacity=".5" stroke="#C06FD4" stroke-width="2"/>
+  <rect x="72" y="98" width="116" height="14" rx="5" fill="#3f5a80" opacity=".5" stroke="#378add" stroke-width="2"/>
   <text x="130" y="108" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">coixinet sobre genolls</text>
   <!-- PERSONA asseguda, vista lateral (esquerra) -->
   <!-- cap -->
-  <circle cx="130" cy="60" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="130" cy="60" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
   <!-- tronc recte -->
-  <line x1="130" y1="73" x2="130" y2="112" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="130" y1="73" x2="130" y2="112" stroke="#378add" stroke-width="3"/>
   <!-- CUIXA horitzontal -->
-  <line x1="130" y1="110" x2="80" y2="112" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="130" y1="110" x2="80" y2="112" stroke="#378add" stroke-width="3.5"/>
   <!-- CAMA (tibia) vertical -->
-  <line x1="80" y1="112" x2="82" y2="151" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="80" y1="112" x2="82" y2="151" stroke="#378add" stroke-width="3.5"/>
   <!-- === PEU POSICIO ALTA (de puntes) - SOLIDA === -->
-  <line x1="70" y1="142" x2="92" y2="151" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="70" y1="142" x2="92" y2="151" stroke="#378add" stroke-width="4"/>
   <text x="56" y="140" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">AMUNT</text>
   <!-- === PEU POSICIO BAIXA (talo avall) - PUNTEJAT === -->
-  <line x1="70" y1="160" x2="92" y2="153" stroke="#C06FD4" stroke-width="2.5" stroke-dasharray="5,3" opacity=".5"/>
-  <text x="54" y="164" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <line x1="70" y1="160" x2="92" y2="153" stroke="#378add" stroke-width="2.5" stroke-dasharray="5,3" opacity=".5"/>
+  <text x="54" y="164" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
   <!-- BESSÓ destacat (part del darrere de la cama) -->
   <rect x="72" y="128" width="14" height="26" rx="5" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="2"/>
   <text x="55" y="138" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">BESSO</text>
   <line x1="64" y1="138" x2="72" y2="138" stroke="#EF9F27" stroke-width="1.5"/>
   <!-- FLETXA moviment: talo puja de puntes -->
-  <path d="M 80 160 Q 62 155 68 143" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ba1)"/>
+  <path d="M 80 160 Q 62 155 68 143" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#ba1)"/>
   <!-- zona de baixada -->
-  <text x="222" y="50" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Puja</text>
+  <text x="222" y="50" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Puja</text>
   <text x="222" y="62" font-size="8.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">de puntes</text>
-  <text x="222" y="80" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Baixa fins</text>
-  <text x="222" y="92" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">sentir</text>
-  <text x="222" y="104" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">estirament</text>
+  <text x="222" y="80" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Baixa fins</text>
+  <text x="222" y="92" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">sentir</text>
+  <text x="222" y="104" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">estirament</text>
   <!-- linia divisoria -->
-  <line x1="190" y1="44" x2="190" y2="112" stroke="#3a1f50" stroke-width="1"/>
+  <line x1="190" y1="44" x2="190" y2="112" stroke="#28405c" stroke-width="1"/>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">BESSONS ASSEGUT - Vista lateral</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Puja de puntes alt - Para 1 seg - Baixa lent fins estirament</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">BESSONS ASSEGUT - Vista lateral</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Puja de puntes alt - Para 1 seg - Baixa lent fins estirament</text>
 </svg>`,
 
   premsa_cames: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="pc1" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><polygon points="0,0 8,3.5 0,7" fill="#EF9F27"/></marker></defs>
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
-  <rect x="12" y="30" width="130" height="130" rx="6" fill="#1a0f28" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="20" y="88" width="55" height="60" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
-  <rect x="134" y="50" width="60" height="55" rx="4" fill="#C06FD4" opacity=".15" stroke="#C06FD4" stroke-width="2"/>
-  <circle cx="40" cy="70" r="12" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="40" y1="82" x2="75" y2="90" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="65" y1="90" x2="130" y2="78" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="65" y1="92" x2="130" y2="104" stroke="#C06FD4" stroke-width="3"/>
-  <rect x="130" y="72" width="16" height="36" rx="3" fill="#C06FD4" opacity=".5" stroke="#C06FD4" stroke-width="1.5"/>
-  <line x1="152" y1="90" x2="170" y2="90" stroke="#EF9F27" stroke-width="2.5" marker-end="url(#pc1)"/>
+  <defs><marker id="pc1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
+  <rect x="12" y="30" width="130" height="130" rx="6" fill="#0e1420" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="20" y="88" width="55" height="60" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
+  <rect x="134" y="50" width="60" height="55" rx="4" fill="#378add" opacity=".15" stroke="#378add" stroke-width="2"/>
+  <circle cx="40" cy="70" r="12" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="40" y1="82" x2="75" y2="90" stroke="#378add" stroke-width="3"/>
+  <line x1="65" y1="90" x2="130" y2="78" stroke="#378add" stroke-width="3"/>
+  <line x1="65" y1="92" x2="130" y2="104" stroke="#378add" stroke-width="3"/>
+  <rect x="130" y="72" width="16" height="36" rx="3" fill="#378add" opacity=".5" stroke="#378add" stroke-width="1.5"/>
+  <line x1="146" y1="90" x2="182" y2="90" stroke="#EF9F27" stroke-width="2" marker-end="url(#pc1)"/>
   <circle cx="130" cy="78" r="5" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="1.5"/>
   <circle cx="130" cy="104" r="5" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="1.5"/>
-  <text x="180" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PREMSA DE CAMES</text>
-  <text x="180" y="34" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Estas reclinada - Empenys la plataforma amb els peus</text>
+  <text x="180" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">PREMSA DE CAMES</text>
+  <text x="180" y="34" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Estas reclinada - Empenys la plataforma amb els peus</text>
   <text x="185" y="80" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">empeny</text>
   <text x="115" y="65" font-size="8" fill="#EF9F27" font-family="sans-serif">genoll</text>
-  <text x="180" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Peus a amplada de malucs - Genolls NO cap endins - No bloquejar</text>
+  <text x="180" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Peus a amplada de malucs - Genolls NO cap endins - No bloquejar</text>
 </svg>`,
 
   curl_isquio: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="ci1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <defs><marker id="ci1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- MAQUINA estructura dreta -->
-  <rect x="182" y="55" width="14" height="107" rx="4" fill="#261636" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="162" y="68" width="22" height="58" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="1.5"/>
+  <rect x="182" y="55" width="14" height="107" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="162" y="68" width="22" height="58" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="1.5"/>
   <!-- SEIENT -->
-  <rect x="90" y="108" width="74" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="110" y="122" width="34" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="90" y="108" width="74" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="110" y="122" width="34" height="46" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
   <!-- RODET SUPERIOR (sobre la cuixa) -->
-  <rect x="90" y="96" width="74" height="13" rx="5" fill="#7a4a90" opacity=".55" stroke="#C06FD4" stroke-width="2"/>
+  <rect x="90" y="96" width="74" height="13" rx="5" fill="#3f5a80" opacity=".55" stroke="#378add" stroke-width="2"/>
   <text x="127" y="106" font-size="7.5" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">rodet cuixa (aguanta la cuixa)</text>
   <!-- RODET INFERIOR (sobre el turmell) -->
-  <rect x="46" y="130" width="24" height="13" rx="5" fill="#C06FD4" opacity=".6" stroke="#C06FD4" stroke-width="2"/>
-  <text x="58" y="126" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">rodet</text>
-  <text x="58" y="118" font-size="7.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">turmell</text>
+  <rect x="46" y="130" width="24" height="13" rx="5" fill="#378add" opacity=".6" stroke="#378add" stroke-width="2"/>
+  <text x="58" y="126" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">rodet</text>
+  <text x="58" y="118" font-size="7.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">turmell</text>
   <!-- PERSONA asseguda, vista lateral -->
   <!-- cap -->
-  <circle cx="138" cy="64" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="138" cy="64" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
   <!-- tronc recte -->
-  <line x1="138" y1="77" x2="138" y2="110" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="138" y1="77" x2="138" y2="110" stroke="#378add" stroke-width="3"/>
   <!-- CUIXA horitzontal (fixa) -->
-  <line x1="138" y1="108" x2="90" y2="110" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="138" y1="108" x2="90" y2="110" stroke="#378add" stroke-width="4"/>
   <!-- CAMA ESTESA (inici - puntejat) -->
-  <line x1="90" y1="110" x2="48" y2="108" stroke="#C06FD4" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
-  <circle cx="48" cy="108" r="4" fill="#C06FD4" opacity=".3"/>
-  <text x="36" y="106" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <line x1="90" y1="110" x2="48" y2="108" stroke="#378add" stroke-width="2" stroke-dasharray="6,4" opacity=".4"/>
+  <circle cx="48" cy="108" r="4" fill="#378add" opacity=".3"/>
+  <text x="36" y="106" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
   <!-- CAMA DOBLEGADA (final - solida i gruixuda) -->
-  <line x1="90" y1="110" x2="58" y2="140" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="90" y1="110" x2="58" y2="140" stroke="#378add" stroke-width="4"/>
   <!-- peu -->
-  <line x1="58" y1="140" x2="46" y2="132" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="58" y1="140" x2="46" y2="132" stroke="#378add" stroke-width="3"/>
   <!-- ISQUIO (darrere de la cuixa) destacat -->
   <rect x="58" y="108" width="34" height="10" rx="4" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <text x="75" y="98" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">ISQUIO</text>
   <line x1="75" y1="100" x2="75" y2="107" stroke="#EF9F27" stroke-width="1.5"/>
   <!-- FLETXA ARC: de estes a doblegat -->
-  <path d="M 50 107 Q 42 126 56 138" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ci1)"/>
+  <path d="M 50 107 Q 42 126 56 138" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#ci1)"/>
   <!-- aviso BAIXA LENT -->
   <text x="222" y="100" font-size="8.5" fill="#f09595" text-anchor="middle" font-family="sans-serif" font-weight="700">ATENCIO!</text>
   <text x="222" y="114" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">Torna a dalt</text>
   <text x="222" y="126" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">molt a poc</text>
   <text x="222" y="138" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">a poc</text>
   <text x="222" y="150" font-size="8" fill="#f09595" text-anchor="middle" font-family="sans-serif">(3-4 seg!)</text>
-  <line x1="196" y1="90" x2="196" y2="160" stroke="#3a1f50" stroke-width="1"/>
+  <line x1="196" y1="90" x2="196" y2="160" stroke="#28405c" stroke-width="1"/>
   <!-- titol -->
-  <text x="130" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">CURL ISQUIOTIBIALS - Assegut</text>
-  <text x="130" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - doblega la cama cap avall enrere</text>
-  <text x="130" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">La tornada (estes) es on es treballa - 3-4 seg pujant</text>
+  <text x="130" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">CURL ISQUIOTIBIALS - Assegut</text>
+  <text x="130" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - doblega la cama cap avall enrere</text>
+  <text x="130" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">La tornada (estes) es on es treballa - 3-4 seg pujant</text>
 </svg>`,
 
   aductor: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="ad1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker>
-    <marker id="ad2" markerWidth="10" markerHeight="8" refX="1" refY="4" orient="auto"><polygon points="10,0 0,4 10,8" fill="#EF9F27"/></marker>
+    <marker id="ad1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
+    <marker id="ad2" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker>
   </defs>
   <!-- terra -->
-  <line x1="10" y1="168" x2="270" y2="168" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="168" x2="270" y2="168" stroke="#28405c" stroke-width="2"/>
   <!-- seient i suport -->
-  <rect x="102" y="108" width="76" height="14" rx="4" fill="#2a1d35" stroke="#7a4a90" stroke-width="2"/>
-  <rect x="120" y="122" width="40" height="46" rx="3" fill="#1e1428" stroke="#5d3d6b" stroke-width="1"/>
+  <rect x="102" y="108" width="76" height="14" rx="4" fill="#141c2c" stroke="#3f5a80" stroke-width="2"/>
+  <rect x="120" y="122" width="40" height="46" rx="3" fill="#141c2c" stroke="#465c80" stroke-width="1"/>
   <!-- COIXINETS PER DINS dels genolls - molt ben diferenciats de l'abductor -->
-  <rect x="88" y="114" width="24" height="20" rx="6" fill="#C06FD4" opacity=".55" stroke="#C06FD4" stroke-width="2.5"/>
-  <text x="100" y="110" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <rect x="88" y="114" width="24" height="20" rx="6" fill="#378add" opacity=".55" stroke="#378add" stroke-width="2.5"/>
+  <text x="100" y="110" font-size="8" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
   <text x="100" y="126" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">DINS</text>
-  <rect x="168" y="114" width="24" height="20" rx="6" fill="#C06FD4" opacity=".55" stroke="#C06FD4" stroke-width="2.5"/>
-  <text x="180" y="110" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
+  <rect x="168" y="114" width="24" height="20" rx="6" fill="#378add" opacity=".55" stroke="#378add" stroke-width="2.5"/>
+  <text x="180" y="110" font-size="8" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="700">PER</text>
   <text x="180" y="126" font-size="8" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="700">DINS</text>
   <!-- PERSONA (vista frontal) -->
-  <circle cx="140" cy="58" r="14" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="140" y1="72" x2="140" y2="108" stroke="#C06FD4" stroke-width="3"/>
+  <circle cx="140" cy="58" r="14" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="140" y1="72" x2="140" y2="108" stroke="#378add" stroke-width="3"/>
   <!-- CUIXES OBERTES (inici - puntejat) -->
-  <line x1="140" y1="108" x2="76" y2="124" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
-  <line x1="140" y1="108" x2="204" y2="124" stroke="#C06FD4" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
-  <text x="64" y="132" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
-  <text x="218" y="132" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <line x1="140" y1="108" x2="76" y2="124" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <line x1="140" y1="108" x2="204" y2="124" stroke="#378add" stroke-width="2" stroke-dasharray="5,4" opacity=".4"/>
+  <text x="64" y="132" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
+  <text x="218" y="132" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
   <!-- CUIXES TANCADES (final - solida i gruixuda) -->
-  <line x1="140" y1="108" x2="100" y2="118" stroke="#C06FD4" stroke-width="4"/>
-  <line x1="140" y1="108" x2="180" y2="118" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="140" y1="108" x2="100" y2="118" stroke="#378add" stroke-width="4"/>
+  <line x1="140" y1="108" x2="180" y2="118" stroke="#378add" stroke-width="4"/>
   <!-- GENOLLS final -->
   <circle cx="100" cy="118" r="6" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <circle cx="180" cy="118" r="6" fill="#EF9F27" opacity=".35" stroke="#EF9F27" stroke-width="1.5"/>
   <!-- cames -->
-  <line x1="100" y1="124" x2="94" y2="167" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="180" y1="124" x2="186" y2="167" stroke="#C06FD4" stroke-width="3"/>
+  <line x1="100" y1="124" x2="94" y2="167" stroke="#378add" stroke-width="3"/>
+  <line x1="180" y1="124" x2="186" y2="167" stroke="#378add" stroke-width="3"/>
   <!-- ADDUCTORS zona interna destacada -->
-  <text x="140" y="97" font-size="8" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">adductors</text>
-  <text x="140" y="107" font-size="7" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">(cara interna cuixa)</text>
+  <text x="140" y="97" font-size="8" fill="#378add" text-anchor="middle" font-family="sans-serif">adductors</text>
+  <text x="140" y="107" font-size="7" fill="#378add" text-anchor="middle" font-family="sans-serif">(cara interna cuixa)</text>
   <!-- FLETXES TANCAMENT - grans i clares -->
-  <line x1="76" y1="121" x2="100" y2="118" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ad1)"/>
-  <line x1="204" y1="121" x2="180" y2="118" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#ad2)"/>
+  <line x1="76" y1="121" x2="100" y2="118" stroke="#EF9F27" stroke-width="2" marker-end="url(#ad1)"/>
+  <line x1="204" y1="121" x2="180" y2="118" stroke="#EF9F27" stroke-width="2" marker-end="url(#ad2)"/>
   <text x="54" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">TANCA</text>
   <text x="228" y="148" font-size="9" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">TANCA</text>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">MAQUINA ADDUCTOR (TANCAR)</text>
-  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Coixinets PER DINS dels genolls - Tanques les cames cap al centre</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Torna lentament a la posicio oberta - No deixis caure el pes</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">MAQUINA ADDUCTOR (TANCAR)</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Coixinets PER DINS dels genolls - Tanques les cames cap al centre</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Torna lentament a la posicio oberta - No deixis caure el pes</text>
 </svg>`,
 
   planxa: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <line x1="10" y1="148" x2="270" y2="148" stroke="#3a1f50" stroke-width="2"/>
-  <circle cx="222" cy="106" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="212" y1="114" x2="206" y2="118" stroke="#C06FD4" stroke-width="2.5"/>
-  <line x1="206" y1="118" x2="74" y2="122" stroke="#C06FD4" stroke-width="4"/>
-  <line x1="196" y1="120" x2="194" y2="147" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="194" y1="147" x2="172" y2="147" stroke="#C06FD4" stroke-width="4"/>
-  <line x1="140" y1="121" x2="138" y2="147" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="138" y1="147" x2="116" y2="147" stroke="#C06FD4" stroke-width="4"/>
-  <line x1="74" y1="122" x2="54" y2="147" stroke="#C06FD4" stroke-width="3"/>
-  <line x1="54" y1="147" x2="42" y2="147" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="10" y1="148" x2="270" y2="148" stroke="#28405c" stroke-width="2"/>
+  <circle cx="222" cy="106" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
+  <line x1="212" y1="114" x2="206" y2="118" stroke="#378add" stroke-width="2.5"/>
+  <line x1="206" y1="118" x2="74" y2="122" stroke="#378add" stroke-width="4"/>
+  <line x1="196" y1="120" x2="194" y2="147" stroke="#378add" stroke-width="3"/>
+  <line x1="194" y1="147" x2="172" y2="147" stroke="#378add" stroke-width="4"/>
+  <line x1="140" y1="121" x2="138" y2="147" stroke="#378add" stroke-width="3"/>
+  <line x1="138" y1="147" x2="116" y2="147" stroke="#378add" stroke-width="4"/>
+  <line x1="74" y1="122" x2="54" y2="147" stroke="#378add" stroke-width="3"/>
+  <line x1="54" y1="147" x2="42" y2="147" stroke="#378add" stroke-width="3.5"/>
   <line x1="40" y1="112" x2="230" y2="108" stroke="#EF9F27" stroke-width="1.5" stroke-dasharray="7,5" opacity=".7"/>
-  <rect x="118" y="116" width="60" height="12" rx="4" fill="#C06FD4" opacity=".2" stroke="#C06FD4" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="148" y="126" font-size="8.5" fill="#C06FD4" text-anchor="middle" font-family="sans-serif" font-weight="600">CORE</text>
+  <rect x="118" y="116" width="60" height="12" rx="4" fill="#378add" opacity=".2" stroke="#378add" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="148" y="126" font-size="8.5" fill="#378add" text-anchor="middle" font-family="sans-serif" font-weight="600">CORE</text>
   <text x="40" y="100" font-size="7" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">cos recte</text>
   <text x="76" y="106" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">NO cul amunt</text>
-  <text x="140" y="20" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">PLANXA ABDOMINAL</text>
-  <text x="140" y="35" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - cos horitzontal recte com una taula</text>
-  <text x="183" y="160" font-size="8" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">avantbracos a terra</text>
-  <text x="140" y="170" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">Umbilical endins - Respira normalment - 20-45 seg per serie</text>
+  <text x="140" y="20" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">PLANXA ABDOMINAL</text>
+  <text x="140" y="35" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - cos horitzontal recte com una taula</text>
+  <text x="183" y="160" font-size="8" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">avantbracos a terra</text>
+  <text x="140" y="170" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">Umbilical endins - Respira normalment - 20-45 seg per serie</text>
 </svg>`,
 
   crunch: `<svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="cr1" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#EF9F27"/></marker></defs>
+  <defs><marker id="cr1" markerUnits="userSpaceOnUse" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><polygon points="0,0 7,3 0,6" fill="#EF9F27"/></marker></defs>
   <!-- terra -->
-  <line x1="10" y1="148" x2="270" y2="148" stroke="#3a1f50" stroke-width="2"/>
+  <line x1="10" y1="148" x2="270" y2="148" stroke="#28405c" stroke-width="2"/>
   <!-- POSICIO INICIAL: estirada (puntejat) -->
-  <circle cx="228" cy="128" r="11" fill="none" stroke="#C06FD4" stroke-width="1.5" stroke-dasharray="4,3" opacity=".45"/>
-  <line x1="218" y1="134" x2="100" y2="138" stroke="#C06FD4" stroke-width="2" stroke-dasharray="4,3" opacity=".45"/>
-  <text x="228" y="118" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">inici</text>
+  <circle cx="228" cy="128" r="11" fill="none" stroke="#378add" stroke-width="1.5" stroke-dasharray="4,3" opacity=".45"/>
+  <line x1="218" y1="134" x2="100" y2="138" stroke="#378add" stroke-width="2" stroke-dasharray="4,3" opacity=".45"/>
+  <text x="228" y="118" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">inici</text>
   <!-- POSICIO FINAL: mig incorporada (solida) -->
   <!-- cap incorporat ~30 graus -->
-  <circle cx="210" cy="100" r="13" fill="none" stroke="#C06FD4" stroke-width="2.5"/>
+  <circle cx="210" cy="100" r="13" fill="none" stroke="#378add" stroke-width="2.5"/>
   <!-- tronc inclinat -->
-  <line x1="200" y1="110" x2="108" y2="132" stroke="#C06FD4" stroke-width="4"/>
+  <line x1="200" y1="110" x2="108" y2="132" stroke="#378add" stroke-width="4"/>
   <!-- mans darrere el cap -->
-  <line x1="210" y1="108" x2="196" y2="116" stroke="#C06FD4" stroke-width="2"/>
-  <line x1="210" y1="108" x2="222" y2="116" stroke="#C06FD4" stroke-width="2"/>
-  <ellipse cx="210" cy="117" rx="9" ry="5" fill="#7a4a90" opacity=".5"/>
-  <text x="232" y="118" font-size="7.5" fill="#a87ab8" font-family="sans-serif">mans</text>
+  <line x1="210" y1="108" x2="196" y2="116" stroke="#378add" stroke-width="2"/>
+  <line x1="210" y1="108" x2="222" y2="116" stroke="#378add" stroke-width="2"/>
+  <ellipse cx="210" cy="117" rx="9" ry="5" fill="#3f5a80" opacity=".5"/>
+  <text x="232" y="118" font-size="7.5" fill="#7a96ba" font-family="sans-serif">mans</text>
   <!-- CUIXA horitzontal (genolls DOBLEGATS - important!) -->
-  <line x1="108" y1="132" x2="80" y2="147" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="108" y1="132" x2="80" y2="147" stroke="#378add" stroke-width="3.5"/>
   <!-- TIBIA vertical (genoll doblegat) -->
-  <line x1="80" y1="147" x2="52" y2="110" stroke="#C06FD4" stroke-width="3.5"/>
+  <line x1="80" y1="147" x2="52" y2="110" stroke="#378add" stroke-width="3.5"/>
   <!-- GENOLL destacat -->
   <circle cx="80" cy="147" r="7" fill="#EF9F27" opacity=".3" stroke="#EF9F27" stroke-width="2"/>
   <text x="80" y="163" font-size="8" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">genoll</text>
   <text x="80" y="173" font-size="7.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif">DOBLEGAT</text>
   <!-- PEU pla a terra -->
-  <line x1="36" y1="148" x2="62" y2="148" stroke="#C06FD4" stroke-width="4"/>
-  <text x="48" y="162" font-size="7.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">peu pla</text>
+  <line x1="36" y1="148" x2="62" y2="148" stroke="#378add" stroke-width="4"/>
+  <text x="48" y="162" font-size="7.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">peu pla</text>
   <!-- ZONA ABDOMINALS destacada (mig del tronc) -->
   <rect x="118" y="122" width="62" height="14" rx="5" fill="#EF9F27" opacity=".25" stroke="#EF9F27" stroke-width="2"/>
   <text x="149" y="132" font-size="8.5" fill="#EF9F27" text-anchor="middle" font-family="sans-serif" font-weight="700">ABDOMINALS</text>
   <!-- FLETXA ARC: moviment d'incorporar-se -->
-  <path d="M 210 130 Q 215 116 210 102" fill="none" stroke="#EF9F27" stroke-width="3.5" marker-end="url(#cr1)"/>
+  <path d="M 210 130 Q 215 116 210 102" fill="none" stroke="#EF9F27" stroke-width="2" marker-end="url(#cr1)"/>
   <text x="240" y="116" font-size="8" fill="#EF9F27" font-family="sans-serif">puja</text>
   <text x="240" y="127" font-size="8" fill="#EF9F27" font-family="sans-serif">~30°</text>
   <!-- error comu: NO estirar coll -->
   <text x="196" y="86" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">cap i coll</text>
   <text x="196" y="96" font-size="7.5" fill="#f09595" text-anchor="middle" font-family="sans-serif">van junts!</text>
   <!-- titol -->
-  <text x="140" y="18" font-size="11" font-weight="700" fill="#C06FD4" text-anchor="middle" font-family="sans-serif">CRUNCH ABDOMINAL</text>
-  <text x="140" y="32" font-size="8.5" fill="#a87ab8" text-anchor="middle" font-family="sans-serif">Vista lateral - genolls doblegats, t incorpores uns 30 graus</text>
-  <text x="140" y="176" font-size="8" fill="#7a4a90" text-anchor="middle" font-family="sans-serif">No estires el coll - Puja controlat - Baixa lent sense rebot</text>
+  <text x="140" y="18" font-size="11" font-weight="700" fill="#378add" text-anchor="middle" font-family="sans-serif">CRUNCH ABDOMINAL</text>
+  <text x="140" y="32" font-size="8.5" fill="#7a96ba" text-anchor="middle" font-family="sans-serif">Vista lateral - genolls doblegats, t incorpores uns 30 graus</text>
+  <text x="140" y="176" font-size="8" fill="#3f5a80" text-anchor="middle" font-family="sans-serif">No estires el coll - Puja controlat - Baixa lent sense rebot</text>
 </svg>`
 
 };
@@ -880,9 +1014,19 @@ const GYM = {
         tip: 'No arquegis la lumbar per guanyar recorregut. Si notes pressio al coll, abaixa el seient.'
       },
       {
-        id: 'tor_5', name: 'Elevacio lateral - politja baixa', mat: 'Politja baixa (unilateral)', series: 3, svg: 'elevacio_lateral',
-        instruccions: 'Posa-te de costat a la politja. Agafa l\'agafador amb la ma del costat contrari (el brac creuada davant el cos). Amb el colze lleugerament doblegat puja el brac cap al costat fins arribar a l\'alcada de l\'espatlla. Torna lentament. Fes totes les repeticions d\'un costat i canvia.',
-        tip: 'Pes molt lleuger. Si el cos es balanceja per ajudar, redueix el pes. El moviment es molt petit i controlat.'
+        id: 'tor_5', name: 'Elevacio lateral - mancuernes', mat: 'Mancuernes', series: 3, svg: 'elevacio_lateral',
+        instruccions: 'De peu, una mancuerna a cada ma amb els bracos avall al costat del cos i els colzes lleugerament doblegats. Puja els dos bracos alhora cap als costats fins arribar a l\'alcada de les espatlles (com si fossis una creu). Para un instant a dalt i baixa lentament controlant el pes. No puges mes amunt de l\'espatlla.',
+        tip: 'Pes lleuger. Si has de balancejar el cos per pujar-les, redueix el pes. El moviment es petit i controlat, sense agafar impuls.'
+      },
+      {
+        id: 'tor_6', name: 'Tríceps - politja alta', mat: 'Maquina politja alta + barra', series: 3, svg: 'triceps_politja', optional: true,
+        instruccions: 'De peu davant la politja alta amb la barra o corda agafada. Enganxa els colzes al costat del cos i mante\'ls FIXOS tot el moviment. Des dels colzes a 90 graus, esten els bracos cap avall fins que quedin del tot rectes, apretant el triceps al final. Torna a poc a poc fins la posicio inicial sense moure els colzes.',
+        tip: 'Opcional. Els colzes no s\'han de separar del cos ni moure endavant. Si el cos es balanceja, baixa el pes.'
+      },
+      {
+        id: 'tor_7', name: 'Bíceps - mancuernes (curl)', mat: 'Mancuernes', series: 3, svg: 'biceps_mancuerna', optional: true,
+        instruccions: 'De peu amb una mancuerna a cada ma, bracos estirats avall i palmells mirant endavant. Mantenint els colzes fixos al costat del cos, flexiona pujant les mancuernes cap a les espatlles apretant el biceps. Baixa controlant en 2-3 segons fins estirar del tot el braç. Pots alternar braç o fer els dos alhora.',
+        tip: 'Opcional. No balancegis el cos ni facis servir l\'esquena per pujar el pes. Tot el treball ve del biceps.'
       }
     ]
   },
@@ -969,8 +1113,10 @@ function showToast(msg){ const t=document.getElementById('toast'); t.textContent
 function goMainTab(i){
   document.querySelectorAll('.tab').forEach((t,j) => t.classList.toggle('on', i===j));
   document.querySelectorAll('.page').forEach((p,j) => p.classList.toggle('on', i===j));
-  document.getElementById('hdr-title').textContent = ['Gym','Pes'][i];
+  document.getElementById('hdr-title').textContent = ['Gym','Pes','Dieta','Resum'][i];
   if(i===1) renderPesTab();
+  if(i===2) renderDietaTab();
+  if(i===3) renderResumTab();
 }
 
 let currentGymTab = 'TORSO';
@@ -1006,7 +1152,8 @@ function renderExercises(tipus){
   g.exercicis.forEach((ex, ei) => {
     let lastEx = null;
     if(last) lastEx = last.exercicis.find(e => e.id===ex.id);
-    const anyUpFlag = lastEx && lastEx.series.some(s => s.puja);
+    const anyUpFlag = exWasUp(lastEx);
+    const optBadge = ex.optional ? '<span class="badge-opt">Opcional</span>' : '';
     const badge = lastEx
       ? (anyUpFlag ? '<span class="badge-up">↑ Puja pes</span>' : '<span class="badge-ok">✓ Mantén</span>')
       : '';
@@ -1020,7 +1167,7 @@ function renderExercises(tipus){
       <div class="ex-hdr" onclick="toggleEx('${tipus}',${ei})">
         <div style="flex:1;min-width:0">
           <div class="ex-name">${ex.name}</div>
-          <div class="ex-meta"><span>${ex.mat}</span>${badge}</div>
+          <div class="ex-meta"><span>${ex.mat}</span>${optBadge}${badge}</div>
         </div>
         <div class="ex-arrow">▾</div>
       </div>
@@ -1046,12 +1193,11 @@ function renderExercises(tipus){
     if(lastEx){
       const seriesRef = lastEx.series.filter(s => s.kg||s.reps);
       if(seriesRef.length){
-        html += `<div class="ex-ref"><div class="ex-ref-title">📊 Última sessió · ${fmtDate(last.data)}</div><div class="ex-ref-row">`;
+        html += `<div class="ex-ref"><div class="ex-ref-title">📊 Última sessió · ${fmtDate(last.data)}${exWasUp(lastEx)?' · ↑ tocava pujar':''}</div><div class="ex-ref-row">`;
         seriesRef.forEach((s,si) => {
           html += `<div class="ex-ref-serie">
             <div class="ex-ref-s">S${si+1}</div>
             <div class="ex-ref-v">${s.kg||'—'}×${s.reps||'—'}</div>
-            ${s.puja ? '<div class="ex-ref-flag">↑ pujar</div>' : ''}
           </div>`;
         });
         html += `</div></div>`;
@@ -1059,7 +1205,7 @@ function renderExercises(tipus){
     }
 
     // Taula sèries
-    html += `<div class="series-hdr"><span>#</span><span>${unitLabel}</span><span>${isPlanxa?'Durada':'Reps'}</span><span>Pujar?</span></div>`;
+    html += `<div class="series-hdr"><span>#</span><span>${unitLabel}</span><span>${isPlanxa?'Durada':'Reps'}</span></div>`;
     for(let s=0; s<ex.series; s++){
       const ref = lastEx ? lastEx.series[s] : null;
       const phKg = ref&&ref.kg ? ref.kg : unitPh;
@@ -1068,67 +1214,92 @@ function renderExercises(tipus){
         <div class="serie-n">${s+1}</div>
         <input class="serie-in" type="number" inputmode="decimal" step="0.5" placeholder="${phKg}" id="kg-${tipus}-${ei}-${s}">
         <input class="serie-in" type="number" inputmode="numeric" placeholder="${phReps}" id="reps-${tipus}-${ei}-${s}">
-        <button class="puja-btn" id="puja-${tipus}-${ei}-${s}" onclick="togglePuja('${tipus}',${ei},${s})">↑ Pujar</button>
       </div>`;
     }
+    html += `<button class="puja-btn big" id="puja-${tipus}-${ei}" onclick="togglePuja('${tipus}',${ei})">↑ Puja pes el pròxim dia</button>`;
 
     html += `</div></div>`;
   });
 
   container.innerHTML = html;
+  restoreDraft(tipus);
+  container.oninput = function(){ autosave(tipus); };
 }
 
 function toggleEx(tipus, i){
   document.getElementById(`ex-${tipus}-${i}`).classList.toggle('open');
 }
 
-function togglePuja(tipus, ei, si){
-  const btn = document.getElementById(`puja-${tipus}-${ei}-${si}`);
+function togglePuja(tipus, ei){
+  const btn = document.getElementById(`puja-${tipus}-${ei}`);
+  if(!btn) return;
   btn.classList.toggle('on');
-  btn.textContent = btn.classList.contains('on') ? '↑ Pujar ✓' : '↑ Pujar';
+  const on = btn.classList.contains('on');
+  btn.textContent = btn.textContent.replace(/ ✓$/,'') + (on?' ✓':'');
+  autosave(tipus);
 }
 
 // ═══════════════════════════════════════════
 // SAVE SESSION
 // ═══════════════════════════════════════════
-function saveSession(tipus){
+function exWasUp(le){
+  if(!le) return false;
+  if(le.puja!==undefined) return !!le.puja;
+  return !!(le.series && le.series.some(s => s.puja));
+}
+function val(id){ return document.getElementById(id)?.value || ''; }
+function setVal(id,v){ const e=document.getElementById(id); if(e && v!=null && v!=='') e.value=v; }
+function setPuja(id){ const b=document.getElementById(id); if(b){ b.classList.add('on'); b.textContent=b.textContent.replace(/ ✓$/,'')+' ✓'; } }
+
+function collectForm(tipus){
   const g = GYM[tipus];
   const id = tipus.toLowerCase();
   const data = document.getElementById(id+'-date').value || today();
-
   const exercicis = g.exercicis.map((ex, ei) => {
     const series = [];
     for(let s=0; s<ex.series; s++){
-      const kg = document.getElementById(`kg-${tipus}-${ei}-${s}`)?.value || '';
-      const reps = document.getElementById(`reps-${tipus}-${ei}-${s}`)?.value || '';
-      const puja = document.getElementById(`puja-${tipus}-${ei}-${s}`)?.classList.contains('on') || false;
-      series.push({kg, reps, puja});
+      series.push({ kg: val(`kg-${tipus}-${ei}-${s}`), reps: val(`reps-${tipus}-${ei}-${s}`) });
     }
-    return {id:ex.id, name:ex.name, series};
+    const puja = document.getElementById(`puja-${tipus}-${ei}`)?.classList.contains('on') || false;
+    return {id:ex.id, name:ex.name, series, puja};
   });
+  return {tipus, data, exercicis};
+}
+function hasAnyData(form){ return form.exercicis.some(ex => ex.series && ex.series.some(s => s.kg||s.reps)); }
 
-  const hasDades = exercicis.some(ex => ex.series.some(s => s.kg||s.reps));
-  if(!hasDades){ showToast('⚠ Afegeix alguna dada primer'); return; }
+function autosave(tipus){ if(!ready) return; S.set('gym_draft_'+tipus, collectForm(tipus)); }
 
-  S.push('gym_sessions', {tipus, data, exercicis, ts: Date.now()});
-  showToast('✅ Sessió guardada!');
-  renderExercises(tipus);
+function restoreDraft(tipus){
+  const d = S.get('gym_draft_'+tipus);
+  if(!d || !d.exercicis) return;
+  const id = tipus.toLowerCase();
+  if(d.data){ const de=document.getElementById(id+'-date'); if(de) de.value=d.data; }
+  d.exercicis.forEach((ex, ei) => {
+    (ex.series||[]).forEach((s,si)=>{ setVal(`kg-${tipus}-${ei}-${si}`, s.kg); setVal(`reps-${tipus}-${ei}-${si}`, s.reps); });
+    if(ex.puja) setPuja(`puja-${tipus}-${ei}`);
+  });
+}
+
+function saveSession(tipus){
+  const form = collectForm(tipus);
+  if(!hasAnyData(form)){ showToast('⚠ Afegeix alguna dada primer'); return; }
+  const all = S.arr('gym_sessions');
+  const idx = all.findIndex(s => s.tipus===tipus && s.data===form.data);
+  const record = {tipus:form.tipus, data:form.data, exercicis:form.exercicis, ts:(idx>=0?all[idx].ts:Date.now())};
+  if(idx>=0){ all[idx]=record; showToast('✅ Sessió actualitzada'); }
+  else { all.push(record); showToast('✅ Sessió guardada!'); }
+  S.set('gym_sessions', all);
+  S.set('gym_draft_'+tipus, form);
+  const sub = document.getElementById(tipus.toLowerCase()+'-last-date');
+  if(sub) sub.textContent = 'Sessió desada ✓ · pots seguir editant';
   renderGymHist(tipus);
 }
 
 function clearForm(tipus){
-  const g = GYM[tipus];
-  g.exercicis.forEach((ex, ei) => {
-    for(let s=0; s<ex.series; s++){
-      const kg = document.getElementById(`kg-${tipus}-${ei}-${s}`);
-      const reps = document.getElementById(`reps-${tipus}-${ei}-${s}`);
-      const puja = document.getElementById(`puja-${tipus}-${ei}-${s}`);
-      if(kg) kg.value='';
-      if(reps) reps.value='';
-      if(puja){ puja.classList.remove('on'); puja.textContent='↑ Pujar'; }
-    }
-  });
-  showToast('Formulari buidat');
+  if(!confirm('Buidar el formulari i començar una sessió nova?\n(Les sessions ja desades a l\'historial no es toquen.)')) return;
+  S.del('gym_draft_'+tipus);
+  renderExercises(tipus);
+  showToast('Formulari buidat · sessió nova');
 }
 
 // ═══════════════════════════════════════════
@@ -1142,8 +1313,8 @@ function renderGymHist(tipus){
   container.innerHTML = sessions.map((s, idx) => {
     const realIdx = S.arr('gym_sessions').findIndex(ss => ss.ts===s.ts);
     const exLines = s.exercicis.map(ex => {
-      const sr = ex.series.filter(s=>s.kg||s.reps).map((s,i)=>`S${i+1}:${s.kg||'?'}×${s.reps||'?'}${s.puja?' ↑':''}`).join(' ');
-      return sr ? `${ex.name}: ${sr}` : null;
+      const sr = ex.series.filter(x=>x.kg||x.reps).map((x,i)=>`S${i+1}:${x.kg||'?'}×${x.reps||'?'}`).join(' ');
+      return sr ? `${ex.name}: ${sr}${exWasUp(ex)?' ↑':''}` : null;
     }).filter(Boolean).join('\n');
 
     return `<div class="gym-hist-card" id="ghc-${s.ts}">
@@ -1227,17 +1398,17 @@ function renderPesCharts(pesos, OBJECTIU){
     responsive:true, maintainAspectRatio:false,
     plugins:{legend:{display:false}},
     scales:{
-      x:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
-      y:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}}
+      x:{ticks:{color:'#465c80',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+      y:{ticks:{color:'#465c80',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}}
     }
   };
 
   if(pesChart) pesChart.destroy();
   const ctx1 = document.getElementById('chart-pes').getContext('2d');
   const datasets = [{
-    data:vals, borderColor:'#C06FD4', borderWidth:2, fill:true,
-    backgroundColor:(c)=>{const gr=c.chart.ctx.createLinearGradient(0,0,0,120);gr.addColorStop(0,'rgba(192,111,212,0.3)');gr.addColorStop(1,'rgba(192,111,212,0)');return gr;},
-    tension:.3, pointRadius:4, pointBackgroundColor:'#C06FD4', pointBorderColor:'#0f0a14', pointBorderWidth:2
+    data:vals, borderColor:'#378add', borderWidth:2, fill:true,
+    backgroundColor:(c)=>{const gr=c.chart.ctx.createLinearGradient(0,0,0,120);gr.addColorStop(0,'rgba(56,138,221,0.3)');gr.addColorStop(1,'rgba(56,138,221,0)');return gr;},
+    tension:.3, pointRadius:4, pointBackgroundColor:'#378add', pointBorderColor:'#080d16', pointBorderWidth:2
   }];
   if(OBJECTIU) datasets.push({
     data:vals.map(()=>OBJECTIU), borderColor:'rgba(239,159,39,0.5)', borderWidth:1.5,
@@ -1253,11 +1424,11 @@ function renderPesCharts(pesos, OBJECTIU){
     datasets:[{
       data:gf.map(p=>parseFloat(p.grasa)), borderColor:'#EF9F27', borderWidth:2, fill:true,
       backgroundColor:'rgba(239,159,39,0.1)', tension:.3, pointRadius:3,
-      pointBackgroundColor:'#EF9F27', pointBorderColor:'#0f0a14', pointBorderWidth:1.5
+      pointBackgroundColor:'#EF9F27', pointBorderColor:'#080d16', pointBorderWidth:1.5
     }]
   }, options:{...opts, scales:{
-    x:{ticks:{color:'#5d3d6b',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
-    y:{ticks:{color:'#5d3d6b',font:{size:9},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}
+    x:{ticks:{color:'#465c80',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+    y:{ticks:{color:'#465c80',font:{size:9},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.04)'}}
   }}});
 }
 
@@ -1322,6 +1493,219 @@ function deletePes(i){
 }
 
 // ═══════════════════════════════════════════
+// DIETA
+// ═══════════════════════════════════════════
+const DIET_MEALS=['esmorzar','migmati','dinar','berenar','sopar'];
+const MEAL_KCAL={esmorzar:290,migmati:320,dinar:650,berenar:210,sopar:520};
+const DIET_T={esmorzar:'Esmorzar',migmati:'Mig matí',dinar:'Dinar',berenar:'Berenar',sopar:'Sopar'};
+const DIET_CLS={esmorzar:'amber',migmati:'teal',dinar:'',berenar:'violet',sopar:''};
+const DIET_FIX={
+  esmorzar:{x:'Cafè sol + 8 g creatina + 1 peça de fruita + 30 g fruits secs (no fregits)'},
+  migmati:{x:'Entrepà: 80 g pa integral + 80 g proteïna magra (gall d\'indi, pernil dolç, tonyina, formatge fresc o ou) + tomàquet opcional'},
+  berenar:{x:'1 peça de fruita + batut de proteïna (1 scoop amb aigua)',note:'És el batut post-entreno. Si entrenes de nit, mou-lo després de sopar.'}
+};
+const DIET_DAY={
+  1:{dinar:{x:'200 g arròs integral + verdura saltejada (sense oli) + 150 g pollastre + 1,5 cull. oli'},
+     sopar:{x:'Amanida verda + 150 g patata + remenat de 2-3 ous (o 150 g proteïna) + 1,5 cull. oli + iogurt sense sucre'}},
+  2:{dinar:{x:'200 g quinoa o cuscús + amanida (canonges, tomàquet, alvocat) + 180 g sèpia o calamar + 1,5 cull. oli'},
+     sopar:{x:'Verdura saltejada (carbassó, xerris) + 150 g pollastre + 1,5 cull. oli + iogurt sense sucre'}},
+  3:{dinar:{x:'200 g pasta de llenties o cigrons + verdura + 180 g vedella magra + 1,5 cull. oli'},
+     sopar:{x:'Espàrrecs a la planxa + 150 g pollastre + 120 g patata + 1,5 cull. oli + iogurt sense sucre'}},
+  4:{dinar:{x:'200 g pasta integral + amanida (enciam, tomàquet, blat de moro) + 150 g pollastre + 1,5 cull. oli'},
+     sopar:{x:'Gaspatxo o puré de verdures + 150 g salmó o tonyina + 150 g patata + 1,5 cull. oli + iogurt sense sucre'}},
+  5:{dinar:{x:'250 g patata + bròquil + 180 g peix blanc + 1,5 cull. oli'},
+     sopar:{x:'2 fajitas (tortilla integral) amb pebrot i ceba + 150 g pollastre + 1,5 cull. oli + iogurt sense sucre'}},
+  6:{dinar:{x:'200 g cigrons cuits + amanida verda + 2 ous durs (o 150 g proteïna) + 1,5 cull. oli'},
+     sopar:{x:'Lliure',free:true}},
+  0:{dinar:{x:'Lliure (mantenint la línia)',free:true},
+     sopar:{x:'Mongeta verda + 200 g patata + 150 g vedella magra o llom + 1,5 cull. oli + iogurt sense sucre'}},
+};
+const DIET_ORDER=[1,2,3,4,5,6,0];
+const DIET_LABELS=['DL','DM','DC','DJ','DV','DS','DG'];
+let dietSel=null;
+
+function weekDates(){
+  const now=new Date(); const dow=now.getDay();
+  const mon=new Date(now); mon.setDate(now.getDate()+(dow===0?-6:1-dow));
+  const map={};
+  DIET_ORDER.forEach((gd,i)=>{const d=new Date(mon); d.setDate(mon.getDate()+i); map[gd]=d.toISOString().slice(0,10);});
+  return map;
+}
+function dietMealText(gd,mk){ if(mk==='dinar') return DIET_DAY[gd].dinar; if(mk==='sopar') return DIET_DAY[gd].sopar; return DIET_FIX[mk]; }
+function isFree(gd,mk){ const m=dietMealText(gd,mk); return !!(m&&m.free); }
+function trackableCount(gd){ return DIET_MEALS.filter(mk=>!isFree(gd,mk)).length; }
+function dietWeightedPct(dates,done){
+  let tot=0,got=0;
+  dates.forEach(dt=>{ const gd=parseISO(dt).getDay(); const dd=done[dt]||{};
+    DIET_MEALS.forEach(mk=>{ if(isFree(gd,mk))return; tot+=MEAL_KCAL[mk]; if(dd[mk])got+=MEAL_KCAL[mk]; }); });
+  return tot?Math.round(got/tot*100):0;
+}
+function renderDietaTab(){
+  if(dietSel===null) dietSel=new Date().getDay();
+  const todayGd=new Date().getDay();
+  document.getElementById('diet-day-sel').innerHTML=DIET_ORDER.map((gd,i)=>
+    `<div class="diet-daybtn${gd===dietSel?' on':''}${gd===todayGd?' today':''}" onclick="setDietDay(${gd})">${DIET_LABELS[i]}</div>`).join('');
+  renderDietMeals(); renderDietStats();
+}
+function setDietDay(gd){ dietSel=gd; renderDietaTab(); }
+function renderDietMeals(){
+  const wd=weekDates(); const date=wd[dietSel];
+  const done=(S.get('diet_done')||{})[date]||{};
+  let html='';
+  DIET_MEALS.forEach(mk=>{
+    const m=dietMealText(dietSel,mk); const free=!!(m&&m.free);
+    const cls=free?'free':(DIET_CLS[mk]||''); const isDone=!!done[mk];
+    html+=`<div class="meal ${cls}"><div class="meal-body">
+      <div class="meal-t">${DIET_T[mk]}</div><div class="meal-x">${m.x}</div>
+      ${m.note?`<div class="meal-note">💡 ${m.note}</div>`:''}</div>
+      ${free?'':`<button class="meal-check${isDone?' done':''}" onclick="toggleMeal('${date}','${mk}')">${isDone?'✓':''}</button>`}</div>`;
+  });
+  document.getElementById('diet-meals').innerHTML=html;
+}
+function toggleMeal(date,mk){
+  const all=S.get('diet_done')||{};
+  if(!all[date]) all[date]={};
+  if(all[date][mk]) delete all[date][mk]; else all[date][mk]=true;
+  if(!Object.keys(all[date]).length) delete all[date];
+  S.set('diet_done',all); renderDietMeals(); renderDietStats();
+}
+function renderDietStats(){
+  const wd=weekDates(); const all=S.get('diet_done')||{};
+  const todayGd=new Date().getDay(); const td=all[wd[todayGd]]||{};
+  const tdone=DIET_MEALS.filter(mk=>td[mk]).length;
+  document.getElementById('diet-today-n').textContent=`${tdone}/${trackableCount(todayGd)}`;
+  document.getElementById('diet-week-n').textContent=dietWeightedPct(DIET_ORDER.map(gd=>wd[gd]),all)+'%';
+}
+
+// ═══════════════════════════════════════════
+// RESUM
+// ═══════════════════════════════════════════
+let resumChart=null;
+const MESOS_R=['gen','feb','mar','abr','mai','jun','jul','ago','set','oct','nov','des'];
+function pad2(n){return n<10?'0'+n:''+n;}
+function parseISO(s){const p=String(s).split('-');return new Date(+p[0],+p[1]-1,+p[2],12,0,0);}
+function fmtISO(d){return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+function weekMondayISO(iso){const d=parseISO(iso);const dow=d.getDay();d.setDate(d.getDate()+(dow===0?-6:1-dow));return fmtISO(d);}
+function weekRangeLabel(wkMon){const s=parseISO(wkMon);const e=new Date(s);e.setDate(s.getDate()+6);return `${s.getDate()} ${MESOS_R[s.getMonth()]} – ${e.getDate()} ${MESOS_R[e.getMonth()]}`;}
+function weekSummary(wkMon){
+  const monday=parseISO(wkMon);
+  const dates=[];for(let i=0;i<7;i++){const d=new Date(monday);d.setDate(monday.getDate()+i);dates.push(fmtISO(d));}
+  const sess=S.arr('gym_sessions').filter(s=>weekMondayISO(s.data)===wkMon);
+  const byType={TORSO:0,CAMES_A:0,CAMES_B:0};sess.forEach(s=>{if(byType[s.tipus]!=null)byType[s.tipus]++;});
+  const done=S.get('diet_done')||{};
+  const dietPct=dietWeightedPct(dates,done);
+  const wpes=S.arr('pesos').filter(p=>weekMondayISO(p.date)===wkMon).sort((a,b)=>a.date<b.date?-1:1);
+  const pes=wpes.length?parseFloat(wpes[wpes.length-1].pes):null;
+  return {wkMon,sessions:sess.length,byType,dietPct,pes};
+}
+function allWeeksAsc(){
+  const set=new Set();
+  S.arr('gym_sessions').forEach(s=>set.add(weekMondayISO(s.data)));
+  S.arr('pesos').forEach(p=>set.add(weekMondayISO(p.date)));
+  Object.keys(S.get('diet_done')||{}).forEach(d=>set.add(weekMondayISO(d)));
+  set.add(weekMondayISO(today()));
+  return [...set].sort();
+}
+function renderResumTab(){
+  const summaries=allWeeksAsc().map(weekSummary);
+  const cur=summaries[summaries.length-1];
+  const sortedPes=[...S.arr('pesos')].sort((a,b)=>a.date<b.date?-1:1);
+  const inici=sortedPes.length?parseFloat(sortedPes[0].pes):null;
+  const pesActual=sortedPes.length?parseFloat(sortedPes[sortedPes.length-1].pes):null;
+  document.getElementById('r-sess').textContent=cur?cur.sessions:0;
+  document.getElementById('r-pes').textContent=pesActual!=null?pesActual.toFixed(1):'—';
+  document.getElementById('r-dieta').textContent=(cur?cur.dietPct:0)+'%';
+  document.getElementById('r-total').textContent=S.arr('gym_sessions').length;
+  const rp=document.getElementById('r-perdut');
+  if(inici!=null&&pesActual!=null){ const perdut=inici-pesActual;
+    rp.textContent=(perdut>=0?'-':'+')+Math.abs(perdut).toFixed(1)+' kg';
+    rp.className='sc-n '+(perdut>0?'cg':perdut<0?'cr':''); }
+  else { rp.textContent='—'; rp.className='sc-n'; }
+  renderResumChart(summaries.slice(-8));
+  renderResumList(summaries.slice().reverse());
+}
+function renderResumChart(sums){
+  const cv=document.getElementById('chart-resum'); if(!cv) return;
+  const ctx=cv.getContext('2d'); if(resumChart) resumChart.destroy();
+  let lastW=null; const wvals=sums.map(s=>{if(s.pes!=null)lastW=s.pes;return lastW;});
+  resumChart=new Chart(ctx,{data:{
+    labels:sums.map(s=>weekRangeLabel(s.wkMon).split(' – ')[0]),
+    datasets:[
+      {type:'bar',data:sums.map(s=>s.sessions),backgroundColor:'rgba(56,138,221,0.55)',borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',data:wvals,borderColor:'#EF9F27',borderWidth:2,tension:.3,pointRadius:3,pointBackgroundColor:'#EF9F27',pointBorderColor:'#080d16',pointBorderWidth:1.5,yAxisID:'y1',order:1,spanGaps:true}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{x:{ticks:{color:'#465c80',font:{size:9}},grid:{display:false}},
+        y:{position:'left',beginAtZero:true,ticks:{stepSize:1,color:'#7aa6d8',font:{size:9}},grid:{color:'rgba(255,255,255,0.04)'}},
+        y1:{position:'right',ticks:{color:'#fac775',font:{size:9}},grid:{display:false}}}}});
+}
+function renderResumList(sums){
+  const c=document.getElementById('resum-list');
+  if(!sums.length){c.innerHTML='<div style="color:var(--t3);font-size:12px;padding:6px 0">Encara no hi ha dades</div>';return;}
+  const curWk=weekMondayISO(today());
+  c.innerHTML=sums.map((s,i)=>{
+    const prev=sums[i+1]; let delta='';
+    if(s.pes!=null&&prev&&prev.pes!=null){const dd=+(s.pes-prev.pes).toFixed(1);if(dd!==0)delta=` <span class="${dd<0?'cg':'cr'}">${dd>0?'+':''}${dd}</span>`;}
+    const bt=s.byType;
+    const dies=(bt.TORSO?'Torso×'+bt.TORSO+' ':'')+(bt.CAMES_A?'Cames A×'+bt.CAMES_A+' ':'')+(bt.CAMES_B?'Cames B×'+bt.CAMES_B:'');
+    return `<div class="wk"><div class="wk-top"><div class="wk-range">${weekRangeLabel(s.wkMon)}</div>
+      ${s.wkMon===curWk?'<span class="wk-cur">Aquesta setmana</span>':''}</div>
+      <div class="wk-metrics">
+        <div class="wk-m"><div class="wk-m-v">${s.sessions}</div><div class="wk-m-l">Sessions</div></div>
+        <div class="wk-m"><div class="wk-m-v">${s.pes!=null?s.pes.toFixed(1):'—'}${delta}</div><div class="wk-m-l">Pes (kg)</div></div>
+        <div class="wk-m"><div class="wk-m-v">${s.dietPct}%</div><div class="wk-m-l">Dieta</div></div>
+      </div>${s.sessions?`<div class="wk-sub">Dies: ${dies}</div>`:''}</div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// CÒPIA DE SEGURETAT
+// ═══════════════════════════════════════════
+const BACKUP_KEYS=['gym_sessions','pesos','pes_config','diet_done','gym_draft_TORSO','gym_draft_CAMES_A','gym_draft_CAMES_B'];
+function collectBackup(){
+  const data={}; BACKUP_KEYS.forEach(k=>{const v=S.get(k); if(v!==null&&v!==undefined) data[k]=v;});
+  return {app:'entrenament_txell',version:1,exportedAt:new Date().toISOString(),data};
+}
+function backupJSON(){return JSON.stringify(collectBackup(),null,2);}
+function downloadBackup(){
+  try{
+    const blob=new Blob([backupJSON()],{type:'application/json'});
+    const url=URL.createObjectURL(blob); const a=document.createElement('a');
+    a.href=url; a.download='entrenament_txell_backup_'+today()+'.json';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},1000);
+    showToast('📥 Còpia descarregada');
+  }catch(e){ showToast('⚠ No s\'ha pogut descarregar'); }
+}
+async function copyBackup(){
+  const txt=backupJSON();
+  try{ await navigator.clipboard.writeText(txt); showToast('📋 Dades copiades'); }
+  catch(e){ window.prompt('Copia aquestes dades manualment:',txt); }
+}
+function applyBackupData(data){
+  BACKUP_KEYS.forEach(k=>{ if(data[k]!==undefined) S.set(k,data[k]); });
+}
+function importData(ev){
+  const f=ev.target.files&&ev.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{
+    try{
+      const obj=JSON.parse(rd.result);
+      const data=(obj&&obj.data)?obj.data:obj;
+      if(!data||typeof data!=='object') throw new Error('bad');
+      if(!confirm('Importar aquesta còpia? Substituirà les dades actuals d\'aquest dispositiu.')){ ev.target.value=''; return; }
+      applyBackupData(data); location.reload();
+    }catch(e){ showToast('⚠ Fitxer no vàlid'); }
+  };
+  rd.readAsText(f); ev.target.value='';
+}
+function resetAllData(){
+  if(!confirm('Esborrar TOTES les dades (entrenaments, pesos i dieta)?\nNo es pot desfer.')) return;
+  if(!confirm('Segur del tot? Començaràs de zero.')) return;
+  ['gym_sessions','pesos','pes_config','diet_done','gym_draft_TORSO','gym_draft_CAMES_A','gym_draft_CAMES_B'].forEach(k=>S.del(k));
+  location.reload();
+}
+
+// ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 function init(){
@@ -1336,6 +1720,7 @@ function init(){
     renderExercises(t);
     renderGymHist(t);
   });
+  ready=true;
 }
 
 init();
